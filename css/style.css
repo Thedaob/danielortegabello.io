@@ -9982,3 +9982,117 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+/* ======================
+   BOTÓN MODO OSCURO
+====================== */
+
+#theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: #16c7a7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+#theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+#theme-toggle .icon {
+  position: absolute;
+  font-size: 18px;
+  transition: all 0.35s ease;
+}
+
+#theme-toggle .moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+body.dark #theme-toggle {
+  background: #0f172a;
+}
+
+body.dark #theme-toggle .sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+}
+
+body.dark #theme-toggle .moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+
+/* ======================
+   MODO OSCURO
+====================== */
+
+body.dark {
+  background-color: #0b1220;
+  color: #e5e7eb;
+}
+
+body.dark header {
+  background-color: #0f172a;
+}
+
+body.dark a {
+  color: #16c7a7;
+}
+
+body.dark .btn,
+body.dark button {
+  background-color: #16c7a7;
+  color: #0b1220;
+}
+
+body.dark section {
+  background-color: #0b1220;
+}
+
+/* =========================
+   SOCIAL BUTTONS FIX GITHUB Y LINKEDIN PARTE SUPERIOR
+========================= */
+
+.social-buttons .btn {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+/* ----- MODO CLARO ----- */
+body:not(.dark-mode) .social-buttons .btn {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+body:not(.dark-mode) .social-buttons .btn:hover {
+  background-color: #ffffff;
+  color: #0e0e0e;
+}
+
+/* ----- MODO OSCURO ----- */
+body.dark-mode .social-buttons .btn {
+  border: 1px solid #0BCEAF;
+  color: #0BCEAF;
+}
+
+body.dark-mode .social-buttons .btn:hover {
+  background-color: #0BCEAF;
+  color: #0e0e0e;
+}
