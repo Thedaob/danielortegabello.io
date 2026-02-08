@@ -4,16 +4,24 @@
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 1. Obtener el texto del div oculto
+    const textSource = document.querySelector('.typed-text');
     
-    // Typed Text Effect
-    const typedTextSpan = document.querySelector(".typed-text-output");
-    const textArray = document.querySelector(".typed-text").textContent.split(',');
-    const typingDelay = 80;      // Velocidad de escritura (más bajo = más rápido)
-    const erasingDelay = 40;     // Velocidad de borrado
-    const newTextDelay = 3000;   // Pausa cuando termina de escribir (3 segundos)
-    const startDelay = 1000;     // Pausa antes de empezar a borrar
-    let textArrayIndex = 0;
-    let charIndex = 0;
+    if (textSource) {
+        // Convertimos el texto en array y limpiamos espacios extra
+        const textArray = textSource.textContent.split(',').map(item => item.trim());
+
+        // 2. Inicializar Typed.js
+        new Typed('.typed-text-output', {
+            strings: textArray,
+            typeSpeed: 60,      // Velocidad al escribir
+            backSpeed: 20,      // Velocidad al borrar
+            backDelay: 2000,    // Tiempo de espera antes de borrar
+            startDelay: 500,    // Tiempo de espera antes de iniciar
+            loop: true,
+            showCursor: true   // Usamos tu cursor CSS (cursor-blink)
+    });
+    }
 
     function type() {
         if (charIndex < textArray[textArrayIndex].trim().length) {

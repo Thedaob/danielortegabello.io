@@ -423,8 +423,17 @@
     font-weight: 700;
     color: var(--primary);
     display: inline-block;
-    min-width: 20px;
+    min-height: 40px; /* Evita que el contenedor colapse al borrar letras */
     text-align: left;
+    vertical-align: middle;
+}
+
+/* Ajuste para que el contenedor de la frase no se rompa en móviles */
+.role-display {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que baje si el texto es muy largo */
+    gap: 8px;
 }
 
 .cursor-blink {
@@ -692,12 +701,16 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
+    .stat-card-2 {
+        bottom: 30%;
+        left: -60px; /* Aumentamos el margen negativo para dar aire al texto */
+    }
     .hero-name {
         font-size: 36px;
     }
     
     .hero-nickname {
-        font-size: 48px;
+        font-size: 3px;
     }
     
     .typed-text-output {
