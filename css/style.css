@@ -10377,3 +10377,758 @@ body.dark-mode .social-buttons .btn:hover {
 .footer-bg a.text-white:hover i {
   transform: translateX(5px);
 }
+
+
+/* ==========================================
+   HERO SECTION STYLES
+   Modern, Animated & Eye-Catching Design
+   ========================================== */
+
+   :root {
+    --primary: #0DD9B3;
+    --primary-dark: #09A889;
+    --primary-light: #5FFFDA;
+    --dark-bg: #0a1628;
+    --dark-secondary: #1a2332;
+    --light-gray: #f1f5f9;
+    --text-dark: #2c3e50;
+}
+
+/* Hero Section Base */
+.hero-section {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-secondary) 50%, #0a1f3d 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Background Shapes */
+.hero-bg-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.1;
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    right: -150px;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 5s;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    right: 10%;
+    animation-delay: 10s;
+}
+
+.shape-4 {
+    width: 250px;
+    height: 250px;
+    bottom: 20%;
+    right: 30%;
+    animation-delay: 15s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-30px) translateX(30px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(-60px) translateX(0) rotate(180deg);
+    }
+    75% {
+        transform: translateY(-30px) translateX(-30px) rotate(270deg);
+    }
+}
+
+/* Particles Container */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Profile Container */
+.profile-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* Animated Rings Around Profile */
+.profile-ring,
+.profile-ring-2 {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    animation: pulse-ring 3s infinite;
+}
+
+.profile-ring {
+    width: 320px;
+    height: 320px;
+    opacity: 0.3;
+}
+
+.profile-ring-2 {
+    width: 360px;
+    height: 360px;
+    opacity: 0.2;
+    animation-delay: 1.5s;
+}
+
+@keyframes pulse-ring {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+/* Profile Image Wrapper */
+.profile-image-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--primary);
+    box-shadow: 0 20px 60px rgba(13, 217, 179, 0.4);
+    transition: all 0.5s ease;
+}
+
+.profile-image-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 80px rgba(13, 217, 179, 0.6);
+}
+
+.profile-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.profile-image-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+/* Profile Status Badge */
+.profile-status {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(13, 217, 179, 0.95);
+    padding: 8px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.status-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Floating Stats Cards */
+.stats-floating {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.stat-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: float-card 4s infinite ease-in-out;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(13, 217, 179, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 40px rgba(13, 217, 179, 0.3);
+}
+
+.stat-card-1 {
+    top: 10%;
+    right: -40px;
+    animation-delay: 0s;
+}
+
+.stat-card-2 {
+    bottom: 30%;
+    left: -40px;
+    animation-delay: 1.3s;
+}
+
+.stat-card-3 {
+    bottom: 10%;
+    right: -30px;
+    animation-delay: 2.6s;
+}
+
+@keyframes float-card {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+.stat-content h4 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-content p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Greeting Badge */
+.greeting-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(13, 217, 179, 0.1);
+    border: 2px solid var(--primary);
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-weight: 600;
+    animation: fadeInDown 1s ease;
+}
+
+.wave-emoji {
+    font-size: 24px;
+    animation: wave 2s infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(14deg); }
+    20%, 40% { transform: rotate(-8deg); }
+    50% { transform: rotate(14deg); }
+    60% { transform: rotate(0deg); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Title */
+.hero-title-wrapper {
+    margin-bottom: 25px;
+}
+
+.hero-name {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--light-gray);
+    margin-bottom: 10px;
+    animation: fadeInLeft 1s ease 0.2s both;
+}
+
+.name-part {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.hero-nickname {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    animation: fadeInLeft 1s ease 0.4s both;
+    text-transform: lowercase;
+}
+
+/* Glitch Effect on Hover */
+.hero-nickname:hover {
+    animation: glitch 0.5s;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Role Container with Typed Effect */
+.role-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    min-height: 60px;
+    animation: fadeIn 1s ease 0.6s both;
+}
+
+.role-label {
+    font-size: 24px;
+    color: var(--light-gray);
+    font-weight: 300;
+}
+
+.typed-text-output {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.cursor-blink {
+    font-size: 32px;
+    color: var(--primary);
+    animation: blink-cursor 1s infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hero Description */
+.hero-description {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 600px;
+    animation: fadeIn 1s ease 0.8s both;
+}
+
+/* CTA Section */
+.hero-cta-section {
+    animation: fadeInUp 1s ease 1s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-custom,
+.btn-secondary-custom {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary-custom {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(13, 217, 179, 0.3);
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(13, 217, 179, 0.5);
+    color: #fff;
+}
+
+.btn-secondary-custom {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-secondary-custom:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(13, 217, 179, 0.3);
+}
+
+.btn-primary-custom i,
+.btn-secondary-custom i {
+    transition: transform 0.3s ease;
+}
+
+.btn-primary-custom:hover i,
+.btn-secondary-custom:hover i {
+    transform: translateX(5px);
+}
+
+/* Social Links Hero */
+.social-links-hero {
+    margin-bottom: 30px;
+}
+
+.social-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-buttons-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(13, 217, 179, 0.1);
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-btn::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    background: var(--primary);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: transform 0.3s ease;
+    font-weight: 600;
+}
+
+.social-btn:hover::before {
+    transform: translateX(-50%) scale(1);
+}
+
+.social-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(13, 217, 179, 0.4);
+}
+
+/* Achievement Badges */
+.achievement-badges {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    color: var(--light-gray);
+    font-size: 14px;
+    border: 1px solid rgba(13, 217, 179, 0.2);
+    transition: all 0.3s ease;
+}
+
+.badge-item i {
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.badge-item:hover {
+    background: rgba(13, 217, 179, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.pulse-badge {
+    animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(13, 217, 179, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(13, 217, 179, 0);
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeIn 2s ease;
+}
+
+.scroll-mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+    position: relative;
+}
+
+.scroll-wheel {
+    width: 4px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-wheel 2s infinite;
+}
+
+@keyframes scroll-wheel {
+    0% {
+        top: 8px;
+        opacity: 1;
+    }
+    100% {
+        top: 30px;
+        opacity: 0;
+    }
+}
+
+.scroll-indicator span {
+    color: var(--primary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-name {
+        font-size: 36px;
+    }
+    
+    .hero-nickname {
+        font-size: 48px;
+    }
+    
+    .typed-text-output {
+        font-size: 24px;
+    }
+    
+    .stat-card {
+        position: static;
+        margin: 10px;
+    }
+    
+    .stats-floating {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .profile-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-name {
+        font-size: 28px;
+    }
+    
+    .hero-nickname {
+        font-size: 36px;
+    }
+    
+    .typed-text-output {
+        font-size: 20px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .social-buttons-group {
+        justify-content: center;
+    }
+    
+    .achievement-badges {
+        justify-content: center;
+    }
+    
+    .profile-image-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .profile-ring {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .profile-ring-2 {
+        width: 300px;
+        height: 300px;
+    }
+}
