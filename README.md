@@ -1,43 +1,79 @@
-# Daniel Ortega Bello
+# 👨‍💻 Daniel Ortega Bello
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fthedaob%2Fthedaob&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Profile+Views&edge_flat=false)](https://hits.seeyoufarm.com)
-[![Twitter Badge](https://img.shields.io/badge/-Twitter-1da1f2?labelColor=1da1f2&logo=twitter&logoColor=white&link=https://twitter.com/thedaob)](https://twitter.com/thedaob)
-[![Linkedin](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/thedaob/)
-[![Instagram Badge](https://img.shields.io/badge/-Instagram-purple?logo=instagram&logoColor=white&link=https://instagram.com/thedaob/)](https://www.instagram.com/thedaob)
-[![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:danielortegabello@gmail.com)
-[![Website Badge](https://img.shields.io/badge/-Website-c14438?style=flat&logo=Google-Chrome&logoColor=white&link=https://thedaob.github.io/danielortegabello.io/)](https://thedaob.github.io/danielortegabello.io/)
-[![Github](https://img.shields.io/github/followers/thedaob?label=Follow&style=social)](https://github.com/thedaob)
+🚀 Automation Engineer | RPA Developer | Cloud & Software Enthusiast  
 
-💻 Passionate about web development: Technologies like JavaScript and frameworks (React, Angular).
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thedaob/)
+[![Website](https://img.shields.io/badge/-Portfolio-000?style=flat&logo=Google-Chrome&logoColor=white)](https://thedaob.github.io/danielortegabello.io/)
+[![GitHub](https://img.shields.io/github/followers/thedaob?label=Follow&style=social)](https://github.com/thedaob)
 
+---
 
-🤖 Developer in RPA and Automation: UiPath, Automation Anywhere, Blue Prism.
+## 🧠 About Me
 
+💻 Software developer focused on automation, cloud technologies, and scalable solutions.  
+🤖 RPA specialist with experience in enterprise process automation.  
+☁️ Currently expanding skills in cloud computing and modern architectures.  
+🔐 Security-aware developer committed to building reliable and robust systems.  
+🤝 Strong collaborator experienced in agile teams and version control workflows.
 
-🎮 Video game enthusiast: Developing one is a project I wish to undertake.
+---
 
+## 🤖 Automation & RPA
 
-🗃️ Databases: SQL (MySQL, PostgreSQL), NoSQL (MongoDB, Oracle).
+- UiPath  
+- Automation Anywhere  
+- Blue Prism  
+- Process analysis and optimization  
+- End-to-end automation solutions  
 
+---
 
-🤝 Effective Collaborator: Experience working in multidisciplinary teams and project management with Git and GitHub.
+## ☁️ Cloud & DevOps (Learning Path)
 
-💡 Creative Innovator: Ability to devise original and effective solutions in software development.
+- AWS fundamentals & architecture  
+- Docker & containerization  
+- CI/CD concepts  
+- Infrastructure and deployment automation  
 
+---
 
-🔐 Security-Focused: Committed to implementing security practices in software development.
+## 🖥 Software Development
 
+- Frontend: HTML5, CSS3, JavaScript, React, Angular, Vue  
+- Backend: Node.js, PHP  
+- APIs & integration  
+- Responsive UI/UX  
 
+---
 
+## 🗄 Databases
 
-### 🖥 Skills
+- SQL: MySQL, PostgreSQL  
+- NoSQL: MongoDB  
+- Data modeling and optimization  
 
-- HTML/CSS
-- JavaScript
-- Frameworks y Librerías de JavaScript (React, Angular, Vue.js)
-- Gestión de Bases de Datos (SQL, NoSQL)
-- Control de Versiones (Git, GitHub)
-- Desarrollo Backend (Node.js, PHP)
-### ⚙️ Tech Stack
+---
 
-![Bootstrap](https://img.shields.io/badge/-Python-05122A?style=flat&logo=Python&color=353535) ![Bootstrap](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=JavaScript&color=353535) ![Bootstrap](https://img.shields.io/badge/-html5-05122A?style=flat&logo=html5&color=353535) ![Bootstrap](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=MongoDB&color=353535) ![Bootstrap](https://img.shields.io/badge/-php-05122A?style=flat&logo=php&color=353535) ![Bootstrap](https://img.shields.io/badge/-MySQL-05122A?style=flat&logo=MySQL&color=353535) ![Bootstrap](https://img.shields.io/badge/-GIT-05122A?style=flat&logo=GIT&color=353535) ![Bootstrap](https://img.shields.io/badge/-React-05122A?style=flat&logo=React&color=353535) ![Bootstrap](https://img.shields.io/badge/-PostgreSQL-05122A?style=flat&logo=PostgreSQL&color=353535) ![Bootstrap](https://img.shields.io/badge/-Pandas-05122A?style=flat&logo=Pandas&color=353535) ![Bootstrap](https://img.shields.io/badge/-Docker-05122A?style=flat&logo=Docker&color=353535) ![Bootstrap](https://img.shields.io/badge/-Visual%20Studio%20Code-05122A?style=flat&logo=Visual-Studio-Code&color=353535) ![Bootstrap](https://img.shields.io/badge/-Unity-05122A?style=flat&logo=Unity&color=353535)
+## ⚙️ Tools & Technologies
+
+![Python](https://img.shields.io/badge/-Python-05122A?style=flat&logo=python)
+![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)
+![Docker](https://img.shields.io/badge/-Docker-05122A?style=flat&logo=docker)
+![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
+![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)
+![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=mongodb)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-05122A?style=flat&logo=postgresql)
+
+---
+
+## 🎯 Professional Interests
+
+- Intelligent Automation & Hyperautomation  
+- Cloud Architecture (AWS)  
+- DevOps & Platform Engineering  
+- Cybersecurity practices  
+- Building scalable software products  
+
+---
+
+⭐ Always learning, building, and improving.
