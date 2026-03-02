@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ImportorDiscord — Bot de Automatización | Daniel Ortega</title>
-  <meta name="description" content="Bot Python que automatiza moderación, gestión de comunidad y comandos personalizados vía Discord API con autenticación segura.">
+  <title>Juego del Impostor — Discord Bot | Daniel Ortega</title>
+  <meta name="description" content="Bot de Discord en Python para juegos de deducción social. Los jugadores reciben una palabra secreta excepto el impostor, quien solo tiene la categoría como pista.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -625,37 +625,40 @@
 
       <div class="phero__kicker">
         <span class="phero__kicker-dot" aria-hidden="true"></span>
-        Proyecto real · Backend · Bot
+        Proyecto real · Juego · Discord Bot
       </div>
 
       <h1 class="phero__title">
-        Importor
-        <em class="phero__title-accent">Discord</em>
+        Juego del
+        <em class="phero__title-accent">Impostor</em>
       </h1>
 
       <p class="phero__subtitle">
-        Bot de automatización para servidores de Discord
+        Bot de deducción social para servidores de Discord
       </p>
 
       <div class="phero__badges">
         <span class="phero__badge phero__badge--cat">
-          <i class="fas fa-robot" aria-hidden="true"></i>
-          Automatización
+          <i class="fas fa-user-secret" aria-hidden="true"></i>
+          Deducción social
         </span>
         <span class="phero__badge phero__badge--cat">
-          <i class="fas fa-server" aria-hidden="true"></i>
-          Backend
+          <i class="fas fa-gamepad" aria-hidden="true"></i>
+          Juego multijugador
         </span>
         <span class="phero__badge phero__badge--cat">
           <i class="fas fa-comments" aria-hidden="true"></i>
-          Bot
+          Bot Discord
         </span>
         <span class="phero__badge phero__badge--tech">
           <i class="fab fa-python" aria-hidden="true"></i>
           Python
         </span>
         <span class="phero__badge phero__badge--tech">
-          Discord API
+          discord.py 2.x
+        </span>
+        <span class="phero__badge phero__badge--tech">
+          Slash Commands
         </span>
       </div>
 
@@ -679,83 +682,69 @@
         <rect x="10" y="10" width="500" height="440" rx="20" fill="rgba(16,28,52,.6)" stroke="rgba(114,137,218,.2)" stroke-width="1"/>
 
         <!-- Título -->
-        <text x="36" y="50" font-family="JetBrains Mono, monospace" font-size="11" fill="rgba(114,137,218,.5)">bot_architecture.py</text>
+        <text x="36" y="50" font-family="JetBrains Mono, monospace" font-size="11" fill="rgba(114,137,218,.5)">game_flow.py</text>
 
-        <!-- Discord server (izq) -->
-        <rect x="36" y="75" width="135" height="85" rx="12" fill="rgba(114,137,218,.12)" stroke="rgba(114,137,218,.4)" stroke-width="1"/>
-        <text x="103" y="107" font-family="JetBrains Mono, monospace" font-size="9" fill="#7289DA" text-anchor="middle">Discord</text>
-        <text x="103" y="122" font-family="JetBrains Mono, monospace" font-size="9" fill="#7289DA" text-anchor="middle">Server</text>
-        <text x="103" y="148" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(165,180,252,.5)" text-anchor="middle">Gateway API</text>
+        <!-- /impostor start command -->
+        <rect x="36" y="65" width="180" height="56" rx="12" fill="rgba(114,137,218,.12)" stroke="rgba(114,137,218,.4)" stroke-width="1"/>
+        <text x="126" y="90" font-family="JetBrains Mono, monospace" font-size="9" fill="#7289DA" text-anchor="middle" font-weight="600">Slash Command</text>
+        <text x="126" y="106" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(165,180,252,.6)" text-anchor="middle">/impostor action:start</text>
+        <text x="126" y="117" font-family="JetBrains Mono, monospace" font-size="7.5" fill="rgba(165,180,252,.4)" text-anchor="middle">player1 ... player10</text>
 
-        <!-- Flecha Discord → Bot -->
-        <path d="M172 117 L205 117" stroke="rgba(13,217,179,.6)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <polygon points="205,113 213,117 205,121" fill="rgba(13,217,179,.6)"/>
+        <!-- Flecha → Validación -->
+        <path d="M217 93 L255 93" stroke="rgba(13,217,179,.6)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <polygon points="255,89 263,93 255,97" fill="rgba(13,217,179,.6)"/>
 
-        <!-- Bot Core (centro) -->
-        <rect x="213" y="60" width="160" height="115" rx="14" fill="rgba(13,217,179,.08)" stroke="rgba(13,217,179,.5)" stroke-width="1.5"/>
-        <text x="293" y="90" font-family="JetBrains Mono, monospace" font-size="10" fill="#0DD9B3" text-anchor="middle" font-weight="600">ImportorBot</text>
-        <text x="293" y="110" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(13,217,179,.6)" text-anchor="middle">commands.Bot()</text>
-        <rect x="228" y="120" width="130" height="20" rx="5" fill="rgba(13,217,179,.1)"/>
-        <text x="293" y="134" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)" text-anchor="middle">on_ready() ✓ active</text>
-        <rect x="228" y="145" width="130" height="20" rx="5" fill="rgba(13,217,179,.06)"/>
-        <text x="293" y="159" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.4)" text-anchor="middle">token auth ✓ secure</text>
+        <!-- Validaciones -->
+        <rect x="263" y="65" width="148" height="56" rx="12" fill="rgba(13,217,179,.08)" stroke="rgba(13,217,179,.4)" stroke-width="1.2"/>
+        <text x="337" y="90" font-family="JetBrains Mono, monospace" font-size="9" fill="#0DD9B3" text-anchor="middle" font-weight="600">Validaciones</text>
+        <text x="337" y="105" font-family="JetBrains Mono, monospace" font-size="7.5" fill="rgba(13,217,179,.5)" text-anchor="middle">≥3 jugadores  ✓  no bots</text>
+        <text x="337" y="117" font-family="JetBrains Mono, monospace" font-size="7.5" fill="rgba(13,217,179,.5)" text-anchor="middle">no duplicados  ✓  DMs open</text>
 
-        <!-- Flecha Bot → Handlers -->
-        <path d="M293 175 L293 205" stroke="rgba(13,217,179,.5)" stroke-width="1.5"/>
-        <polygon points="289,205 293,213 297,205" fill="rgba(13,217,179,.5)"/>
+        <!-- Flecha → words.txt -->
+        <path d="M337 121 L337 148" stroke="rgba(13,217,179,.5)" stroke-width="1.5"/>
+        <polygon points="333,148 337,156 341,148" fill="rgba(13,217,179,.5)"/>
 
-        <!-- Handler boxes -->
-        <!-- Commands -->
-        <rect x="155" y="215" width="100" height="50" rx="10" fill="rgba(130,170,255,.1)" stroke="rgba(130,170,255,.3)" stroke-width="1"/>
-        <text x="205" y="238" font-family="JetBrains Mono, monospace" font-size="8" fill="#82aaff" text-anchor="middle">Commands</text>
-        <text x="205" y="253" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(130,170,255,.5)" text-anchor="middle">@bot.command()</text>
+        <!-- words.txt / categoría aleatoria -->
+        <rect x="230" y="156" width="215" height="52" rx="12" fill="rgba(255,189,46,.08)" stroke="rgba(255,189,46,.3)" stroke-width="1"/>
+        <text x="337" y="178" font-family="JetBrains Mono, monospace" font-size="9" fill="#FFBD2E" text-anchor="middle" font-weight="600">words.txt → random pick</text>
+        <text x="337" y="194" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(255,189,46,.55)" text-anchor="middle">categoría: COCINA  •  palabra: sartén</text>
 
-        <!-- Events -->
-        <rect x="265" y="215" width="100" height="50" rx="10" fill="rgba(199,125,255,.1)" stroke="rgba(199,125,255,.3)" stroke-width="1"/>
-        <text x="315" y="238" font-family="JetBrains Mono, monospace" font-size="8" fill="#c792ea" text-anchor="middle">Events</text>
-        <text x="315" y="253" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(199,125,255,.5)" text-anchor="middle">@bot.event()</text>
+        <!-- Flecha → Asignación de roles -->
+        <path d="M337 208 L337 236" stroke="rgba(255,189,46,.5)" stroke-width="1.5"/>
+        <polygon points="333,236 337,244 341,236" fill="rgba(255,189,46,.5)"/>
 
-        <!-- Moderation -->
-        <rect x="375" y="215" width="100" height="50" rx="10" fill="rgba(255,189,46,.08)" stroke="rgba(255,189,46,.25)" stroke-width="1"/>
-        <text x="425" y="238" font-family="JetBrains Mono, monospace" font-size="8" fill="#FFBD2E" text-anchor="middle">Moderation</text>
-        <text x="425" y="253" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(255,189,46,.5)" text-anchor="middle">auto mod</text>
+        <!-- Asignación de roles -->
+        <rect x="36" y="244" width="460" height="52" rx="12" fill="rgba(16,28,52,.7)" stroke="rgba(114,137,218,.2)" stroke-width="1"/>
+        <text x="266" y="264" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.6)" text-anchor="middle" font-weight="600">Asignación aleatoria de roles (DM privado)</text>
+        <!-- Jugador normal -->
+        <rect x="48" y="272" width="170" height="16" rx="5" fill="rgba(39,201,63,.1)"/>
+        <text x="133" y="283" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#27C93F" text-anchor="middle">🟢 Jugador: palabra = "sartén"</text>
+        <!-- Impostor -->
+        <rect x="226" y="272" width="170" height="16" rx="5" fill="rgba(255,95,86,.1)"/>
+        <text x="311" y="283" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#FF5F56" text-anchor="middle">🕵️ Impostor: solo categoría</text>
+        <!-- Orden -->
+        <rect x="404" y="272" width="80" height="16" rx="5" fill="rgba(114,137,218,.1)"/>
+        <text x="444" y="283" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#7289DA" text-anchor="middle">orden random</text>
 
-        <!-- Líneas Bot → Handlers -->
-        <path d="M260 213 L205 215" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
-        <path d="M293 213 L315 215" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
-        <path d="M325 213 L425 215" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+        <!-- Flecha → Mensaje público -->
+        <path d="M266 296 L266 324" stroke="rgba(114,137,218,.5)" stroke-width="1.5"/>
+        <polygon points="262,324 266,332 270,324" fill="rgba(114,137,218,.5)"/>
 
-        <!-- Flecha Commands → Action -->
-        <path d="M205 265 L205 295" stroke="rgba(130,170,255,.4)" stroke-width="1" stroke-dasharray="3 2"/>
-        <polygon points="201,295 205,302 209,295" fill="rgba(130,170,255,.4)"/>
+        <!-- Mensaje público en servidor -->
+        <rect x="36" y="332" width="460" height="56" rx="12" fill="rgba(114,137,218,.08)" stroke="rgba(114,137,218,.25)" stroke-width="1"/>
+        <text x="266" y="352" font-family="JetBrains Mono, monospace" font-size="9" fill="#7289DA" text-anchor="middle" font-weight="600">📢 Mensaje público en el servidor</text>
+        <text x="266" y="367" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(165,180,252,.5)" text-anchor="middle">🎮 Juego iniciado · 👥 5 jugadores · 🕵️ 1 impostor</text>
+        <text x="266" y="380" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(165,180,252,.4)" text-anchor="middle">💡 Categoría (pista): COCINA  •  orden de juego aleatorio</text>
 
-        <!-- Actions box -->
-        <rect x="36" y="302" width="430" height="40" rx="10" fill="rgba(13,217,179,.05)" stroke="rgba(13,217,179,.15)" stroke-width="1"/>
-        <text x="251" y="319" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(13,217,179,.6)" text-anchor="middle">response = await ctx.send(message)  |  await member.kick()  |  await channel.purge()</text>
-        <text x="251" y="332" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(13,217,179,.35)" text-anchor="middle">↳ Real-time Discord API response</text>
-
-        <!-- Status indicators -->
-        <circle cx="50" cy="395" r="5" fill="#27C93F"/>
-        <text x="63" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">bot.is_ready()</text>
-        <circle cx="165" cy="395" r="5" fill="#0DD9B3"/>
-        <text x="178" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">latency: ~42ms</text>
-        <circle cx="285" cy="395" r="5" fill="#7289DA"/>
-        <text x="298" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">guilds: connected</text>
-        <circle cx="405" cy="395" r="5" fill="#FFBD2E"/>
-        <text x="418" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">token: ✓</text>
-
-        <!-- Auth block (top right) -->
-        <rect x="373" y="75" width="100" height="85" rx="12" fill="rgba(255,189,46,.08)" stroke="rgba(255,189,46,.2)" stroke-width="1"/>
-        <text x="423" y="107" font-family="JetBrains Mono, monospace" font-size="8" fill="#FFBD2E" text-anchor="middle">Token Auth</text>
-        <text x="423" y="122" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(255,189,46,.5)" text-anchor="middle">.env secure</text>
-        <text x="423" y="148" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(255,189,46,.4)" text-anchor="middle">OAuth2 ✓</text>
-
-        <!-- Línea Auth → Bot -->
-        <path d="M373 117 L373 117 L374 117" stroke="rgba(255,189,46,.0)" stroke-width="1"/>
-        <path d="M374 117 L375 117" stroke="rgba(255,189,46,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <!-- Corrección: flecha de Auth al bot -->
-        <path d="M373 117 L380 117" stroke="rgba(255,189,46,.0)"/>
-        <path d="M374 117 L374 67 L293 67 L293 60" stroke="rgba(255,189,46,.3)" stroke-width="1" stroke-dasharray="3 3"/>
+        <!-- Status bar -->
+        <circle cx="50" cy="418" r="5" fill="#27C93F"/>
+        <text x="63" y="422" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">3–10 players</text>
+        <circle cx="155" cy="418" r="5" fill="#0DD9B3"/>
+        <text x="168" y="422" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">DMs enviados</text>
+        <circle cx="270" cy="418" r="5" fill="#FFBD2E"/>
+        <text x="283" y="422" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">rol: aleatorio</text>
+        <circle cx="385" cy="418" r="5" fill="#7289DA"/>
+        <text x="398" y="422" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">slash cmd ✓</text>
       </svg>
     </div>
 
@@ -763,23 +752,24 @@
 
   <hr class="pdivider">
 
-  <!-- ── Descripción ──────────────────────────────────────────── -->
   <section class="psection" aria-labelledby="desc-heading">
     <p class="psection__label">Sobre el proyecto</p>
-    <h2 class="psection__heading" id="desc-heading" data-reveal>¿Qué es ImportorDiscord?</h2>
+    <h2 class="psection__heading" id="desc-heading" data-reveal>¿Qué es Juego del Impostor?</h2>
 
     <p class="pdesc__text" data-reveal>
-      <strong style="color: var(--c-text); font-weight: 600;">ImportorDiscord</strong> es un bot desarrollado 
-      en Python que automatiza tareas dentro de servidores de Discord utilizando la API oficial de Discord. 
-      El sistema está diseñado para simplificar la gestión diaria de comunidades digitales, eliminando 
-      trabajo repetitivo y garantizando consistencia en las operaciones del servidor.
+      <strong style="color: var(--c-text); font-weight: 600;">Juego del Impostor</strong> es un bot de 
+      Discord desarrollado en Python que facilita partidas de un juego de deducción social. Todos los 
+      jugadores reciben una <em>palabra secreta</em> de una categoría específica por mensaje directo 
+      (DM) — excepto el impostor, quien solo recibe la categoría como pista y debe adivinar 
+      la palabra sin delatarse.
     </p>
 
     <p class="pdesc__text" data-reveal>
-      Utiliza autenticación mediante token seguro almacenado en variables de entorno, lo que garantiza 
-      que las credenciales nunca quedan expuestas en el código fuente. La arquitectura está orientada 
-      a la escalabilidad, permitiendo añadir nuevos comandos y módulos sin necesidad de reestructurar 
-      el core del sistema.
+      El objetivo de los jugadores normales es identificar al impostor dando pistas sutiles sin revelar 
+      la palabra exacta. El impostor, por su parte, debe pasar desapercibido escuchando las descripciones 
+      de los demás y deducir cuál es la palabra secreta. La partida corre completamente desde Discord 
+      mediante <strong style="color: var(--c-text);">Slash Commands</strong>, con toda la lógica en el 
+      backend Python: selección aleatoria de categoría, palabra, rol e impostor, y orden de turno.
     </p>
 
     <!-- Bloque de código decorativo -->
@@ -788,29 +778,31 @@
         <div class="pcode__dot"></div>
         <div class="pcode__dot"></div>
         <div class="pcode__dot"></div>
-        <span class="pcode__filename">importor_bot.py</span>
+        <span class="pcode__filename">bot.py — /impostor start</span>
       </div>
       <div class="pcode__body">
-        <pre><span class="tok-keyword">import</span> discord
-<span class="tok-keyword">from</span> discord.ext <span class="tok-keyword">import</span> commands
-<span class="tok-keyword">import</span> os
+        <pre><span class="tok-comment"># Slash command principal del juego</span>
+<span class="tok-dec">@bot.tree.command</span>(name<span class="tok-op">=</span><span class="tok-string">"impostor"</span>, description<span class="tok-op">=</span><span class="tok-string">"Inicia una partida del Impostor"</span>)
+<span class="tok-keyword">async def</span> <span class="tok-fn">impostor</span>(interaction, action: <span class="tok-fn">str</span>, player1: discord.Member, <span class="tok-comment">...)</span>:
 
-<span class="tok-comment"># Configuración con token seguro en .env</span>
-<span class="tok-var">intents</span> <span class="tok-op">=</span> discord.Intents.<span class="tok-fn">default</span>()
-<span class="tok-var">intents</span>.message_content <span class="tok-op">=</span> <span class="tok-keyword">True</span>
-<span class="tok-var">bot</span> <span class="tok-op">=</span> commands.<span class="tok-fn">Bot</span>(command_prefix<span class="tok-op">=</span><span class="tok-string">"!"</span>, intents<span class="tok-op">=</span><span class="tok-var">intents</span>)
+    <span class="tok-comment"># 1. Validar jugadores (≥3, sin bots, sin duplicados)</span>
+    players <span class="tok-op">=</span> [p <span class="tok-keyword">for</span> p <span class="tok-keyword">in</span> [player1, player2, <span class="tok-comment">...]</span> <span class="tok-keyword">if</span> p]
 
-<span class="tok-dec">@bot.event</span>
-<span class="tok-keyword">async def</span> <span class="tok-fn">on_ready</span>():
-    <span class="tok-fn">print</span>(<span class="tok-string">f"Bot activo: {bot.user}"</span>)
+    <span class="tok-comment"># 2. Selección aleatoria: categoría → palabra</span>
+    category, word <span class="tok-op">=</span> <span class="tok-fn">get_random_word</span>(<span class="tok-string">"words.txt"</span>)
 
-<span class="tok-dec">@bot.command</span>(name<span class="tok-op">=</span><span class="tok-string">"limpiar"</span>)
-<span class="tok-dec">@commands.has_permissions</span>(manage_messages<span class="tok-op">=</span><span class="tok-keyword">True</span>)
-<span class="tok-keyword">async def</span> <span class="tok-fn">clear</span>(ctx, amount: <span class="tok-fn">int</span>):
-    <span class="tok-keyword">await</span> ctx.channel.<span class="tok-fn">purge</span>(limit<span class="tok-op">=</span><span class="tok-var">amount</span>)
-    <span class="tok-keyword">await</span> ctx.<span class="tok-fn">send</span>(<span class="tok-string">f"✅ {amount} mensajes eliminados."</span>)
+    <span class="tok-comment"># 3. Elegir impostor(es) al azar</span>
+    impostors <span class="tok-op">=</span> random.<span class="tok-fn">sample</span>(players, k<span class="tok-op">=</span>impostors_count)
 
-<span class="tok-var">bot</span>.<span class="tok-fn">run</span>(os.<span class="tok-fn">getenv</span>(<span class="tok-string">"DISCORD_TOKEN"</span>))</pre>
+    <span class="tok-comment"># 4. Enviar DM personalizado a cada jugador</span>
+    <span class="tok-keyword">for</span> player <span class="tok-keyword">in</span> players:
+        <span class="tok-keyword">if</span> player <span class="tok-keyword">in</span> impostors:
+            <span class="tok-keyword">await</span> player.<span class="tok-fn">send</span>(<span class="tok-string">f"🕵️ Eres el IMPOSTOR\n💡 Categoría: {category}"</span>)
+        <span class="tok-keyword">else</span>:
+            <span class="tok-keyword">await</span> player.<span class="tok-fn">send</span>(<span class="tok-string">f"🟢 Tu palabra: {word}\n📁 Categoría: {category}"</span>)
+
+    <span class="tok-comment"># 5. Anunciar partida en el canal público</span>
+    <span class="tok-keyword">await</span> interaction.<span class="tok-fn">response</span>.<span class="tok-fn">send_message</span>(embed<span class="tok-op">=</span><span class="tok-fn">build_game_embed</span>(players, category))</pre>
       </div>
     </div>
 
@@ -822,44 +814,44 @@
   <section class="psection--alt" aria-labelledby="features-heading">
     <div class="psection__inner">
       <p class="psection__label">Funcionalidades</p>
-      <h2 class="psection__heading" id="features-heading" data-reveal>Características principales</h2>
+      <h2 class="psection__heading" id="features-heading" data-reveal>Características del juego</h2>
 
       <div class="pfeatures__grid">
 
         <div class="pfeature" data-feature>
-          <div class="pfeature__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-          <h3 class="pfeature__title">Autenticación segura</h3>
-          <p class="pfeature__desc">Token de Discord almacenado en variables de entorno <code style="font-family:var(--f-mono);font-size:.78em;color:var(--c-primary);">.env</code>, sin exposición en el código fuente ni en repositorios.</p>
+          <div class="pfeature__icon"><i class="fas fa-random" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Sistema completamente aleatorio</h3>
+          <p class="pfeature__desc">Categorías, palabras, impostores y orden de turno se seleccionan al azar en cada partida, garantizando que ninguna ronda sea igual a la anterior.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Mensajes privados por DM</h3>
+          <p class="pfeature__desc">Cada jugador recibe su rol y palabra por mensaje directo (DM). El impostor solo recibe la categoría. El bot notifica si algún jugador tiene los DMs cerrados.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Múltiples categorías</h3>
+          <p class="pfeature__desc">Base de palabras en <code style="font-family:var(--f-mono);font-size:.78em;color:var(--c-primary);">words.txt</code> con categorías configurables: Lugares, Gaming, Cocina, Música, Deportes y más. Fácilmente extensible.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">3 a 10 jugadores</h3>
+          <p class="pfeature__desc">Soporta partidas de diferentes tamaños con mínimo 3 jugadores. Recomendado entre 4 y 8 para la mejor experiencia. Número de impostores configurable.</p>
         </div>
 
         <div class="pfeature" data-feature>
           <div class="pfeature__icon"><i class="fas fa-terminal" aria-hidden="true"></i></div>
-          <h3 class="pfeature__title">Sistema de comandos</h3>
-          <p class="pfeature__desc">Comandos personalizados con prefijos definibles, control de permisos por rol y respuestas dinámicas en tiempo real al canal correspondiente.</p>
+          <h3 class="pfeature__title">Slash Commands modernos</h3>
+          <p class="pfeature__desc">Interfaz nativa de Discord con <code style="font-family:var(--f-mono);font-size:.78em;color:var(--c-primary);">/impostor action:start</code>, autocompletado de parámetros y validación de entradas en tiempo real.</p>
         </div>
 
         <div class="pfeature" data-feature>
-          <div class="pfeature__icon"><i class="fas fa-gavel" aria-hidden="true"></i></div>
-          <h3 class="pfeature__title">Moderación automática</h3>
-          <p class="pfeature__desc">Gestión automática de miembros, limpieza de mensajes en masa, silenciado temporal y registro de acciones de moderación con timestamp.</p>
-        </div>
-
-        <div class="pfeature" data-feature>
-          <div class="pfeature__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
-          <h3 class="pfeature__title">Procesamiento en tiempo real</h3>
-          <p class="pfeature__desc">Conexión persistente al gateway de Discord con reconexión automática ante interrupciones, garantizando disponibilidad continua del bot.</p>
-        </div>
-
-        <div class="pfeature" data-feature>
-          <div class="pfeature__icon"><i class="fas fa-users-cog" aria-hidden="true"></i></div>
-          <h3 class="pfeature__title">Gestión de comunidad</h3>
-          <p class="pfeature__desc">Bienvenidas automáticas a nuevos miembros, asignación de roles por defecto y mensajes de confirmación en canales privados de moderación.</p>
-        </div>
-
-        <div class="pfeature" data-feature>
-          <div class="pfeature__icon"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></div>
-          <h3 class="pfeature__title">Arquitectura extensible</h3>
-          <p class="pfeature__desc">Estructura modular basada en <em>cogs</em> de discord.py, que permite añadir funcionalidades sin afectar el funcionamiento del sistema existente.</p>
+          <div class="pfeature__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Validaciones robustas</h3>
+          <p class="pfeature__desc">El bot verifica: mínimo 3 jugadores, no se aceptan bots ni jugadores duplicados, al menos 1 impostor y que no sean todos impostores. Errores descriptivos por canal.</p>
         </div>
 
       </div>
@@ -874,16 +866,254 @@
     <h2 class="psection__heading" id="tech-heading" data-reveal>Stack utilizado</h2>
 
     <div class="ptech__grid">
-      <span class="ptech__item" data-tech><i class="fab fa-python" aria-hidden="true"></i> Python 3.10+</span>
-      <span class="ptech__item" data-tech>discord.py 2.x</span>
-      <span class="ptech__item" data-tech><i class="fas fa-key" aria-hidden="true"></i> python-dotenv</span>
+      <span class="ptech__item" data-tech><i class="fab fa-python" aria-hidden="true"></i> Python 3.8+</span>
+      <span class="ptech__item" data-tech>discord.py ≥ 2.0.0</span>
+      <span class="ptech__item" data-tech><i class="fas fa-key" aria-hidden="true"></i> python-dotenv ≥ 0.19</span>
+      <span class="ptech__item" data-tech>Discord Slash Commands</span>
       <span class="ptech__item" data-tech>Discord Gateway API</span>
-      <span class="ptech__item" data-tech>OAuth2 Token Auth</span>
+      <span class="ptech__item" data-tech>Server Members Intent</span>
+      <span class="ptech__item" data-tech>asyncio / coroutines</span>
       <span class="ptech__item" data-tech><i class="fab fa-github" aria-hidden="true"></i> Git / GitHub</span>
-      <span class="ptech__item" data-tech>asyncio</span>
-      <span class="ptech__item" data-tech>Intents API</span>
     </div>
   </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Ejemplo de partida ──────────────────────────────────── -->
+  <section class="psection" aria-labelledby="example-heading">
+    <p class="psection__label">Flujo real</p>
+    <h2 class="psection__heading" id="example-heading" data-reveal>Ejemplo de partida</h2>
+
+    <p class="pdesc__text" data-reveal>
+      Una partida típica con 5 jugadores y 1 impostor sobre la categoría <strong style="color:var(--c-primary);">COCINA</strong>. 
+      El impostor no recibe la palabra, solo la categoría, y debe deducir que la palabra es <em>"sartén"</em> 
+      escuchando las pistas de los demás sin delatarse.
+    </p>
+
+    <div class="pgame-example" data-reveal>
+
+      <!-- Comando de inicio -->
+      <div class="pgame__block pgame__block--command">
+        <div class="pgame__block-label">
+          <i class="fas fa-terminal"></i> Slash Command
+        </div>
+        <code class="pgame__command">/impostor action:start player1:@Alice player2:@Bob player3:@Charlie player4:@David player5:@Eve impostors:1</code>
+      </div>
+
+      <!-- Mensaje público -->
+      <div class="pgame__block pgame__block--public">
+        <div class="pgame__block-label">
+          <i class="fas fa-broadcast-tower"></i> Canal público del servidor
+        </div>
+        <div class="pgame__discord-msg">
+          <div class="pgame__msg-line pgame__msg-line--title">🎮 Juego iniciado correctamente</div>
+          <div class="pgame__msg-line">👥 Jugadores <span class="pgame__val">(5)</span>: Alice, Bob, Charlie, David, Eve</div>
+          <div class="pgame__msg-line">🕵️ Impostores: <span class="pgame__val">1</span></div>
+          <div class="pgame__msg-line">💡 Categoría (pista): <span class="pgame__val pgame__val--cat">COCINA</span></div>
+          <div class="pgame__msg-divider"></div>
+          <div class="pgame__msg-line pgame__msg-line--sub">📋 Orden de juego:</div>
+          <div class="pgame__msg-line pgame__msg-line--order">1. Charlie &nbsp; 2. Eve &nbsp; 3. Alice &nbsp; 4. Bob &nbsp; 5. David</div>
+        </div>
+      </div>
+
+      <!-- DMs -->
+      <div class="pgame__dms">
+        <div class="pgame__block pgame__block--dm pgame__block--player">
+          <div class="pgame__block-label">
+            <i class="fas fa-envelope"></i> DM — Jugador normal (ej: Alice)
+          </div>
+          <div class="pgame__discord-msg">
+            <div class="pgame__msg-line">🟢 Tu palabra es: <span class="pgame__val" style="color:#27C93F">sartén</span></div>
+            <div class="pgame__msg-line">📁 Categoría: <span class="pgame__val">COCINA</span></div>
+            <div class="pgame__msg-line pgame__msg-line--sub">Encuentra al impostor.</div>
+          </div>
+        </div>
+
+        <div class="pgame__block pgame__block--dm pgame__block--impostor">
+          <div class="pgame__block-label">
+            <i class="fas fa-user-secret"></i> DM — El Impostor (ej: David)
+          </div>
+          <div class="pgame__discord-msg">
+            <div class="pgame__msg-line">🕵️‍♂️ Eres el <span class="pgame__val" style="color:#FF5F56">IMPOSTOR</span></div>
+            <div class="pgame__msg-line">💡 Pista – Categoría: <span class="pgame__val">COCINA</span></div>
+            <div class="pgame__msg-line pgame__msg-line--sub">No tienes palabra. La categoría te ayudará a adivinar.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Durante la partida -->
+      <div class="pgame__block pgame__block--chat">
+        <div class="pgame__block-label">
+          <i class="fas fa-comments"></i> Durante la partida — pistas en voz alta
+        </div>
+        <div class="pgame__chat">
+          <div class="pgame__chat-msg"><span class="pgame__chat-user pgame__chat-user--1">Charlie</span><span class="pgame__chat-text">Metálico</span></div>
+          <div class="pgame__chat-msg"><span class="pgame__chat-user pgame__chat-user--2">Eve</span><span class="pgame__chat-text">Mango</span></div>
+          <div class="pgame__chat-msg"><span class="pgame__chat-user pgame__chat-user--3">Alice</span><span class="pgame__chat-text">Redondo</span></div>
+          <div class="pgame__chat-msg pgame__chat-msg--impostor"><span class="pgame__chat-user pgame__chat-user--4">David</span><span class="pgame__chat-text pgame__chat-impostor-think">… ¿Sartén? ¿Olla? … <em style="opacity:.5">hmm</em></span><span class="pgame__impostor-badge">impostor</span></div>
+          <div class="pgame__chat-msg"><span class="pgame__chat-user pgame__chat-user--5">Bob</span><span class="pgame__chat-text">Antiadherente</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <style>
+    /* ── Estilos del bloque de ejemplo de partida ────── */
+    .pgame-example {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .pgame__block {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      backdrop-filter: blur(12px);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .pgame__block.is-visible { opacity: 1; transform: none; }
+
+    .pgame__block-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-text-muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pgame__block-label i { color: var(--c-primary); }
+
+    .pgame__block--command { border-color: rgba(114,137,218,.25); }
+    .pgame__block--command .pgame__block-label i { color: var(--c-discord-l); }
+
+    .pgame__block--public { border-color: rgba(13,217,179,.22); }
+
+    .pgame__block--player { border-color: rgba(39,201,63,.2); }
+    .pgame__block--player .pgame__block-label i { color: #27C93F; }
+
+    .pgame__block--impostor { border-color: rgba(255,95,86,.22); }
+    .pgame__block--impostor .pgame__block-label i { color: #FF5F56; }
+
+    .pgame__block--chat { border-color: rgba(114,137,218,.18); }
+
+    .pgame__command {
+      font-family: var(--f-mono);
+      font-size: .8rem;
+      color: var(--c-discord-l);
+      background: rgba(114,137,218,.08);
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: block;
+      word-break: break-all;
+      line-height: 1.6;
+    }
+
+    .pgame__discord-msg {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: .88rem;
+    }
+
+    .pgame__msg-line {
+      color: var(--c-text-mid);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .pgame__msg-line--title {
+      font-family: var(--f-display);
+      font-size: .98rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 4px;
+    }
+    .pgame__msg-line--sub { color: var(--c-text-muted); font-size: .82rem; }
+    .pgame__msg-line--order { font-family: var(--f-mono); font-size: .8rem; color: var(--c-text-muted); }
+
+    .pgame__msg-divider {
+      height: 1px;
+      background: rgba(241,245,249,.07);
+      margin: 4px 0;
+    }
+
+    .pgame__val {
+      font-weight: 600;
+      color: var(--c-text);
+    }
+    .pgame__val--cat {
+      color: var(--c-primary);
+      font-family: var(--f-mono);
+      font-size: .82em;
+      background: rgba(13,217,179,.1);
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    .pgame__dms {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px) { .pgame__dms { grid-template-columns: 1fr; } }
+
+    /* Chat */
+    .pgame__chat {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pgame__chat-msg {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pgame__chat-user {
+      font-family: var(--f-display);
+      font-size: .78rem;
+      font-weight: 700;
+      min-width: 70px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-align: center;
+    }
+    .pgame__chat-user--1 { background: rgba(52,152,219,.15); color: #3498DB; }
+    .pgame__chat-user--2 { background: rgba(155,89,182,.15); color: #c792ea; }
+    .pgame__chat-user--3 { background: rgba(39,201,63,.12); color: #27C93F; }
+    .pgame__chat-user--4 { background: rgba(255,95,86,.12); color: #FF5F56; }
+    .pgame__chat-user--5 { background: rgba(13,217,179,.1); color: var(--c-primary); }
+
+    .pgame__chat-text {
+      font-size: .88rem;
+      color: var(--c-text-mid);
+      font-weight: 400;
+    }
+
+    .pgame__chat-msg--impostor .pgame__chat-text { color: rgba(255,95,86,.7); font-style: italic; }
+
+    .pgame__impostor-badge {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(255,95,86,.12);
+      color: #FF5F56;
+      border: 1px solid rgba(255,95,86,.25);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-left: auto;
+    }
+  </style>
 
   <!-- ── Footer de página ─────────────────────────────────────── -->
   <footer class="ppage-footer">
@@ -923,6 +1153,12 @@
     /* Techs con delay escalonado */
     document.querySelectorAll('[data-tech]').forEach((el, i) => {
       el.style.transitionDelay = (i * 60) + 'ms';
+      io.observe(el);
+    });
+
+    /* Bloques del ejemplo de partida con delay escalonado */
+    document.querySelectorAll('.pgame__block').forEach((el, i) => {
+      el.style.transitionDelay = (i * 100) + 'ms';
       io.observe(el);
     });
 
