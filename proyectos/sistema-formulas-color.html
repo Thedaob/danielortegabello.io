@@ -1401,51 +1401,61 @@
 
     <div class="pgallery__grid">
 
-      <!-- Slot 1: Pantalla principal -->
+     <!-- Slot 1 -->
       <div class="pgallery__item" data-gallery style="transition-delay: 0ms">
-        <div class="pgallery__placeholder">
-          <i class="fas fa-desktop pgallery__placeholder-icon" aria-hidden="true"></i>
-          <div class="pgallery__placeholder-text">Pantalla principal del sistema</div>
-          <div class="pgallery__placeholder-sub">Agregar captura: pantalla-inicio.png</div>
+        <img
+          src="img/pantalla-inicio.png"
+          alt="Pantalla principal del sistema Tecnítex"
+          class="pgallery__img"
+          onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')"
+        >
+        <div class="pgallery__placeholder" hidden>
         </div>
         <div class="pgallery__label">Pantalla principal — búsqueda y colores frecuentes</div>
       </div>
 
-      <!-- Slot 2: Resultado de fórmula -->
+      <!-- Slot 2 -->
       <div class="pgallery__item" data-gallery style="transition-delay: 100ms">
-        <div class="pgallery__placeholder">
-          <i class="fas fa-flask pgallery__placeholder-icon" aria-hidden="true"></i>
-          <div class="pgallery__placeholder-text">Vista de fórmula con pigmentos</div>
-          <div class="pgallery__placeholder-sub">Agregar captura: formula-resultado.png</div>
+        <img
+          src="img/formula-resultado.png"
+          alt="Vista de fórmula con pigmentos y cantidades"
+          class="pgallery__img"
+          onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')"
+        >
+        <div class="pgallery__placeholder" hidden>
         </div>
         <div class="pgallery__label">Fórmula detallada — pigmentos y cantidades</div>
       </div>
 
-      <!-- Slot 3: Calculadora en uso -->
+      <!-- Slot 3 -->
       <div class="pgallery__item" data-gallery style="transition-delay: 200ms">
-        <div class="pgallery__placeholder">
-          <i class="fas fa-calculator pgallery__placeholder-icon" aria-hidden="true"></i>
-          <div class="pgallery__placeholder-text">Calculadora de proporciones activa</div>
-          <div class="pgallery__placeholder-sub">Agregar captura: calculadora.png</div>
+        <img
+          src="img/calculadora.png"
+          alt="Calculadora de proporciones en uso"
+          class="pgallery__img"
+          onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')"
+        >
+        <div class="pgallery__placeholder" hidden>
         </div>
         <div class="pgallery__label">Calculadora — conversión de volumen en tiempo real</div>
       </div>
 
-      <!-- Slot 4: Formulario de creación -->
+      <!-- Slot 4 -->
       <div class="pgallery__item" data-gallery style="transition-delay: 300ms">
-        <div class="pgallery__placeholder">
-          <i class="fas fa-plus pgallery__placeholder-icon" aria-hidden="true"></i>
-          <div class="pgallery__placeholder-text">Formulario de creación de color</div>
-          <div class="pgallery__placeholder-sub">Agregar captura: crear-color.png</div>
+        <img
+          src="img/crear-color.png"
+          alt="Formulario de alta de nuevo color"
+          class="pgallery__img"
+          onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')"
+        >
+        <div class="pgallery__placeholder" hidden>
         </div>
         <div class="pgallery__label">Formulario — alta de nuevo color al catálogo</div>
       </div>
 
-    </div>
-
     <p style="font-size:.78rem; color: var(--c-text-muted); margin-top: 18px; font-family: var(--f-mono);">
       <i class="fas fa-info-circle" style="color:var(--c-primary);margin-right:6px;" aria-hidden="true"></i>
-      Para reemplazar los placeholders: coloca las capturas en la misma carpeta y actualiza el <code style="color:var(--c-primary)">src</code> de cada imagen.
+      Este es un proyecto privado; las imágenes corresponden a una captura real de la aplicación en Tecnítex Pinturas en una fase Beta.
     </p>
   </section>
 
