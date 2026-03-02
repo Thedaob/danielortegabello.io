@@ -1,13 +1,13 @@
 {
   "extends": [
-    "development"
+    "development",
+    "accessibility",
+    "web-recommended"
   ],
   "hints": {
-    "axe/name-role-value": [
-      "default",
-      {
-        "button-name": "off"
-      }
-    ]
+    "axe/name-role-value": "error",
+    "axe/button-name": "error",
+    "no-inline-styles": "warning",
+    "disown-opener": "error"
   }
 }

@@ -11606,3 +11606,50 @@ body.dark-mode .social-buttons .btn:hover {
 
 /* ─── Dark mode (body.dark) — ya debería funcionar por defecto, ajustes si necesario ─── */
 body.dark .proj-section { background: #07101e; }
+
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255,255,255,0.05);
+    padding: 18px 20px;
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Tarjeta de contraste para contacto de WhatsApp*/
+.wa-card {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 14px 18px;
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Botón elegante */
+.wa-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #25D366; /* verde WhatsApp oficial */
+    font-weight: 600;
+    font-size: 15px;
+
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+/* Ícono */
+.wa-icon {
+    font-size: 18px;
+}
+
+/* Hover profesional */
+.wa-button:hover {
+    color: #ffffff;
+    transform: translateX(3px);
+}
