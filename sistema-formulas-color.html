@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Fórmulas de Color — App Web Empresarial | Daniel Ortega</title>
+  <meta name="description" content="Sistema web empresarial para consultar, gestionar y crear fórmulas de color desde una base de datos centralizada con PHP y MySQL.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────────────────────
+       DESIGN SYSTEM (coherente con el portafolio principal)
+    ───────────────────────────────────────────────────────── */
+    :root {
+      --c-bg:         #0a1628;
+      --c-bg2:        #0e1e38;
+      --c-surface:    rgba(16,28,52,.78);
+      --c-primary:    #0DD9B3;
+      --c-primary-d:  #09A889;
+      --c-primary-l:  #5FFFDA;
+      --c-accent1:    #E74C3C;
+      --c-accent2:    #3498DB;
+      --c-accent3:    #9B59B6;
+      --c-border:     rgba(13,217,179,.18);
+      --c-border-h:   rgba(13,217,179,.55);
+      --c-text:       #f1f5f9;
+      --c-text-mid:   rgba(241,245,249,.72);
+      --c-text-muted: rgba(241,245,249,.42);
+      --f-display:    'Syne', sans-serif;
+      --f-body:       'DM Sans', sans-serif;
+      --f-mono:       'JetBrains Mono', monospace;
+      --ease:         cubic-bezier(.2,.8,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--f-body);
+      background: var(--c-bg);
+      color: var(--c-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--c-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--c-border-h); border-radius: 3px; }
+
+    /* ─────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────── */
+    .pnav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,22,40,.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(13,217,179,.08);
+      transition: padding .4s var(--ease);
+    }
+
+    .pnav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--c-primary);
+      transition: gap .3s var(--ease), opacity .3s;
+      letter-spacing: .04em;
+    }
+    .pnav__back:hover { gap: 14px; opacity: .85; }
+
+    .pnav__back-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--c-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem;
+      transition: background .3s, border-color .3s;
+    }
+    .pnav__back:hover .pnav__back-icon {
+      background: rgba(13,217,179,.12);
+      border-color: var(--c-border-h);
+    }
+
+    .pnav__logo {
+      font-family: var(--f-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--c-text-muted);
+    }
+    .pnav__logo span { color: var(--c-primary); }
+
+    /* ─────────────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────────────── */
+    .phero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      overflow: hidden;
+    }
+
+    .phero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 70% 40%, rgba(155,89,182,.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 15% 75%, rgba(52,152,219,.09) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 40% at 50% 10%, rgba(13,217,179,.06) 0%, transparent 55%),
+        linear-gradient(180deg, #0a1628 0%, #0e1e38 100%);
+    }
+
+    .phero__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(155,89,182,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(155,89,182,.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse 75% 65% at 60% 45%, #000 25%, transparent 100%);
+    }
+
+    .phero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+    }
+
+    .phero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 18px;
+      background: rgba(155,89,182,.1);
+      border: 1px solid rgba(155,89,182,.28);
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #c792ea;
+      margin-bottom: 28px;
+      animation: fadeInDown .8s var(--ease) both;
+    }
+
+    .phero__kicker-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #9B59B6;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(155,89,182,.7); }
+      50%      { box-shadow: 0 0 0 6px rgba(155,89,182,0); }
+    }
+
+    .phero__title {
+      font-family: var(--f-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: var(--c-text);
+      margin-bottom: 10px;
+      animation: fadeInLeft .9s var(--ease) .1s both;
+    }
+
+    .phero__title-accent {
+      display: block;
+      background: linear-gradient(135deg, #E74C3C 0%, #9B59B6 50%, #3498DB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .phero__subtitle {
+      font-size: 1.1rem;
+      color: var(--c-text-mid);
+      margin-bottom: 36px;
+      line-height: 1.65;
+      font-style: italic;
+      font-weight: 300;
+      animation: fadeIn 1s var(--ease) .3s both;
+    }
+
+    .phero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 44px;
+      animation: fadeInUp .9s var(--ease) .4s both;
+    }
+
+    .phero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+
+    .phero__badge--cat {
+      background: rgba(155,89,182,.12);
+      color: #c792ea;
+      border: 1px solid rgba(155,89,182,.3);
+    }
+
+    .phero__badge--tech {
+      background: rgba(13,217,179,.1);
+      color: var(--c-primary);
+      border: 1px solid var(--c-border);
+      font-family: var(--f-mono);
+      font-size: .73rem;
+    }
+
+    .phero__ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp .9s var(--ease) .55s both;
+    }
+
+    .btn-primary, .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 30px;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: all .4s var(--ease);
+      border: 2px solid;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-d) 100%);
+      color: #0a1628;
+      border-color: var(--c-primary);
+      box-shadow: 0 8px 28px rgba(13,217,179,.25);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(13,217,179,.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--c-text-mid);
+      border-color: rgba(241,245,249,.15);
+    }
+    .btn-ghost:hover {
+      border-color: var(--c-border-h);
+      color: var(--c-primary);
+      background: rgba(13,217,179,.06);
+      transform: translateY(-3px);
+    }
+
+    /* Diagrama decorativo del sistema */
+    .phero__deco {
+      position: absolute;
+      right: 3%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(520px, 44vw);
+      opacity: .92;
+      animation: fadeIn 1.2s var(--ease) .6s both;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity:0; transform: translateY(-20px); }
+      to   { opacity:1; transform: none; }
+    }
+    @keyframes fadeInLeft {
+      from { opacity:0; transform: translateX(-30px); }
+      to   { opacity:1; transform: none; }
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: none; }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECCIONES
+    ───────────────────────────────────────────────────── */
+    .psection {
+      padding: 90px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .psection--alt {
+      background: rgba(14,30,56,.5);
+      max-width: 100%;
+      padding: 90px 0;
+    }
+    .psection--alt .psection__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .psection__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: 18px;
+    }
+    .psection__label::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--c-primary);
+      opacity: .7;
+    }
+
+    .psection__heading {
+      font-family: var(--f-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 32px;
+      letter-spacing: -.02em;
+    }
+
+    /* ─── Descripción ───────────────────────────────────── */
+    .pdesc__text {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--c-text-mid);
+      font-weight: 300;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    /* ─── Screenshots / UI mockup ─────────────────────── */
+    .pmockup {
+      margin: 40px 0;
+      background: #0d1b30;
+      border: 1px solid rgba(155,89,182,.2);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0,0,0,.5);
+      data-reveal: '';
+    }
+
+    .pmockup__bar {
+      padding: 14px 20px;
+      background: rgba(155,89,182,.08);
+      border-bottom: 1px solid rgba(155,89,182,.12);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pmockup__dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .pmockup__dot:nth-child(1) { background: #FF5F56; }
+    .pmockup__dot:nth-child(2) { background: #FFBD2E; }
+    .pmockup__dot:nth-child(3) { background: #27C93F; }
+
+    .pmockup__url {
+      margin-left: 10px;
+      font-family: var(--f-mono);
+      font-size: .73rem;
+      color: var(--c-text-muted);
+    }
+
+    .pmockup__screen {
+      padding: 32px 36px;
+    }
+
+    /* UI simulada de la app */
+    .ui-app {
+      font-family: var(--f-body);
+    }
+
+    .ui-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(241,245,249,.06);
+    }
+
+    .ui-header__title {
+      font-family: var(--f-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--c-text);
+    }
+
+    .ui-header__badge {
+      padding: 6px 14px;
+      background: rgba(13,217,179,.1);
+      border: 1px solid var(--c-border);
+      border-radius: 999px;
+      font-size: .72rem;
+      color: var(--c-primary);
+      font-family: var(--f-mono);
+    }
+
+    .ui-search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .ui-search__input {
+      flex: 1;
+      padding: 10px 16px;
+      background: rgba(241,245,249,.04);
+      border: 1px solid rgba(241,245,249,.1);
+      border-radius: 8px;
+      color: var(--c-text-mid);
+      font-family: var(--f-mono);
+      font-size: .8rem;
+    }
+
+    .ui-search__btn {
+      padding: 10px 18px;
+      background: rgba(13,217,179,.15);
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      color: var(--c-primary);
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .ui-table { width: 100%; border-collapse: collapse; }
+
+    .ui-table th {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c-text-muted);
+      border-bottom: 1px solid rgba(241,245,249,.06);
+    }
+
+    .ui-table td {
+      padding: 12px 14px;
+      font-size: .82rem;
+      color: var(--c-text-mid);
+      border-bottom: 1px solid rgba(241,245,249,.04);
+      font-family: var(--f-mono);
+    }
+
+    .ui-table tr:hover td { background: rgba(13,217,179,.04); }
+
+    .ui-swatch {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-right: 8px;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .ui-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 600;
+    }
+    .ui-status--active { background: rgba(39,201,63,.12); color: #27C93F; }
+    .ui-status--draft  { background: rgba(255,189,46,.1); color: #FFBD2E; }
+
+    /* ─── Features grid ───────────────────────────────── */
+    .pfeatures__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .pfeature {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 16px;
+      padding: 24px 26px;
+      backdrop-filter: blur(14px);
+      transition: border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .pfeature.is-visible { opacity: 1; transform: none; }
+    .pfeature:hover {
+      border-color: var(--c-border-h);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13,217,179,.08);
+    }
+
+    .pfeature__icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(13,217,179,.1);
+      border: 1px solid var(--c-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: var(--c-primary);
+      margin-bottom: 16px;
+    }
+
+    .pfeature__title {
+      font-family: var(--f-display);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 8px;
+    }
+
+    .pfeature__desc {
+      font-size: .85rem;
+      line-height: 1.65;
+      color: var(--c-text-muted);
+      font-weight: 300;
+    }
+
+    /* ─── Tech stack ─────────────────────────────────── */
+    .ptech__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .ptech__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      backdrop-filter: blur(14px);
+      font-family: var(--f-mono);
+      font-size: .82rem;
+      color: var(--c-text-mid);
+      transition: all .4s var(--ease);
+      opacity: 0; transform: translateY(20px);
+    }
+    .ptech__item.is-visible { opacity: 1; transform: none; }
+    .ptech__item:hover {
+      background: rgba(13,217,179,.1);
+      border-color: var(--c-border-h);
+      color: var(--c-primary);
+      transform: translateY(-3px);
+    }
+
+    /* ─── CRUD flow ──────────────────────────────────── */
+    .pcrud {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 600px) { .pcrud { grid-template-columns: repeat(2, 1fr); } }
+
+    .pcrud__item {
+      padding: 18px 16px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      text-align: center;
+      transition: all .35s var(--ease);
+      opacity: 0; transform: scale(.96);
+    }
+    .pcrud__item.is-visible { opacity: 1; transform: none; }
+    .pcrud__item:hover {
+      border-color: var(--c-border-h);
+      background: rgba(13,217,179,.08);
+      transform: translateY(-3px);
+    }
+
+    .pcrud__letter {
+      font-family: var(--f-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .pcrud__item:nth-child(1) .pcrud__letter { color: #27C93F; }
+    .pcrud__item:nth-child(2) .pcrud__letter { color: var(--c-primary); }
+    .pcrud__item:nth-child(3) .pcrud__letter { color: #FFBD2E; }
+    .pcrud__item:nth-child(4) .pcrud__letter { color: #FF5F56; }
+
+    .pcrud__label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .pcrud__desc {
+      font-size: .75rem;
+      color: var(--c-text-muted);
+      font-weight: 300;
+    }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    .ppage-footer {
+      padding: 60px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(241,245,249,.06);
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .ppage-footer__text {
+      font-size: .85rem;
+      color: var(--c-text-muted);
+    }
+    .ppage-footer__text strong {
+      color: var(--c-text);
+      font-family: var(--f-display);
+    }
+
+    .ppage-footer__nav {
+      display: flex;
+      gap: 16px;
+    }
+
+    .ppage-footer__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: all .35s var(--ease);
+    }
+
+    .ppage-footer__btn--ghost {
+      border: 1px solid var(--c-border);
+      color: var(--c-text-muted);
+    }
+    .ppage-footer__btn--ghost:hover {
+      border-color: var(--c-border-h);
+      color: var(--c-primary);
+      background: rgba(13,217,179,.06);
+    }
+
+    .ppage-footer__btn--prev {
+      background: rgba(13,217,179,.08);
+      border: 1px solid var(--c-border);
+      color: var(--c-primary);
+    }
+    .ppage-footer__btn--prev:hover {
+      background: rgba(13,217,179,.18);
+      border-color: var(--c-border-h);
+      transform: translateX(-4px);
+    }
+
+    .pdivider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(155,89,182,.2), transparent);
+      margin: 0;
+      border: none;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+
+    /* ─── Responsive ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .pnav { padding: 14px 20px; }
+      .phero { padding: 110px 20px 70px; min-height: auto; }
+      .phero__deco { display: none; }
+      .psection { padding: 70px 20px; }
+      .psection--alt .psection__inner { padding: 0 20px; }
+      .pfeatures__grid { grid-template-columns: 1fr; }
+      .ui-table th:nth-child(3),
+      .ui-table td:nth-child(3) { display: none; }
+      .ppage-footer { padding: 40px 20px; flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      [data-reveal], .pfeature, .ptech__item, .pcrud__item { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ────────────────────────────────────────────────── -->
+  <nav class="pnav" role="navigation" aria-label="Navegación del proyecto">
+    <a href="../index.html" class="pnav__back">
+      <span class="pnav__back-icon" aria-hidden="true">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      Volver al portafolio
+    </a>
+    <span class="pnav__logo"><span>The</span>daob</span>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <section class="phero" aria-label="Presentación del proyecto">
+
+    <div class="phero__bg" aria-hidden="true"></div>
+    <div class="phero__grid" aria-hidden="true"></div>
+
+    <div class="phero__content">
+
+      <div class="phero__kicker">
+        <span class="phero__kicker-dot" aria-hidden="true"></span>
+        Proyecto real · Cliente · Empresarial
+      </div>
+
+      <h1 class="phero__title">
+        Sistema de
+        <em class="phero__title-accent">Fórmulas de Color</em>
+      </h1>
+
+      <p class="phero__subtitle">
+        Aplicación web empresarial para gestión de fórmulas de color
+      </p>
+
+      <div class="phero__badges">
+        <span class="phero__badge phero__badge--cat">
+          <i class="fas fa-building" aria-hidden="true"></i>
+          Sistema empresarial
+        </span>
+        <span class="phero__badge phero__badge--cat">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          Web App
+        </span>
+        <span class="phero__badge phero__badge--cat">
+          <i class="fas fa-database" aria-hidden="true"></i>
+          Base de datos
+        </span>
+        <span class="phero__badge phero__badge--tech">
+          <i class="fab fa-php" aria-hidden="true"></i> PHP
+        </span>
+        <span class="phero__badge phero__badge--tech">MySQL</span>
+        <span class="phero__badge phero__badge--tech">JS</span>
+      </div>
+
+      <div class="phero__ctas">
+        <a href="../index.html#projects" class="btn-ghost">
+          <i class="fas fa-th-large" aria-hidden="true"></i>
+          Todos los proyectos
+        </a>
+        <a href="importordiscord.html" class="btn-primary">
+          Ver otro proyecto
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- UI mockup decorativo SVG -->
+    <div class="phero__deco" aria-hidden="true">
+      <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ventana principal -->
+        <rect x="10" y="10" width="500" height="420" rx="16" fill="rgba(16,28,52,.8)" stroke="rgba(155,89,182,.25)" stroke-width="1"/>
+
+        <!-- Barra superior -->
+        <rect x="10" y="10" width="500" height="42" rx="16" fill="rgba(155,89,182,.1)"/>
+        <rect x="10" y="36" width="500" height="16" fill="rgba(155,89,182,.1)"/>
+        <circle cx="35" cy="31" r="6" fill="#FF5F56"/>
+        <circle cx="55" cy="31" r="6" fill="#FFBD2E"/>
+        <circle cx="75" cy="31" r="6" fill="#27C93F"/>
+        <text x="200" y="36" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(241,245,249,.4)" text-anchor="middle">localhost/colorsystem/formulas.php</text>
+
+        <!-- Sidebar -->
+        <rect x="10" y="52" width="110" height="378" fill="rgba(10,22,40,.6)" rx="0"/>
+        <rect x="10" y="52" width="110" height="378" fill="rgba(155,89,182,.03)"/>
+
+        <text x="65" y="85" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)" text-anchor="middle" font-weight="600">ColorSystem</text>
+
+        <!-- Nav items -->
+        <rect x="18" y="100" width="94" height="28" rx="6" fill="rgba(13,217,179,.15)" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+        <text x="65" y="118" font-family="JetBrains Mono, monospace" font-size="8" fill="#0DD9B3" text-anchor="middle">▸ Fórmulas</text>
+
+        <rect x="18" y="135" width="94" height="28" rx="6" fill="transparent"/>
+        <text x="65" y="153" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.4)" text-anchor="middle">Pigmentos</text>
+
+        <rect x="18" y="170" width="94" height="28" rx="6" fill="transparent"/>
+        <text x="65" y="188" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.4)" text-anchor="middle">Clientes</text>
+
+        <rect x="18" y="205" width="94" height="28" rx="6" fill="transparent"/>
+        <text x="65" y="223" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.4)" text-anchor="middle">Reportes</text>
+
+        <!-- Contenido principal -->
+        <rect x="125" y="62" width="375" height="40" rx="0" fill="transparent"/>
+        <text x="140" y="82" font-family="JetBrains Mono, monospace" font-size="11" fill="rgba(241,245,249,.85)" font-weight="600">Fórmulas de Color</text>
+        <rect x="420" y="66" width="70" height="22" rx="6" fill="rgba(13,217,179,.15)" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+        <text x="455" y="81" font-family="JetBrains Mono, monospace" font-size="8" fill="#0DD9B3" text-anchor="middle">+ Nueva</text>
+
+        <!-- Barra de búsqueda -->
+        <rect x="125" y="108" width="280" height="26" rx="6" fill="rgba(241,245,249,.04)" stroke="rgba(241,245,249,.08)" stroke-width="1"/>
+        <text x="140" y="124" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.25)">🔍  Buscar fórmula...</text>
+
+        <!-- Tabla header -->
+        <rect x="125" y="145" width="375" height="22" rx="0" fill="rgba(241,245,249,.03)"/>
+        <text x="140" y="159" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(241,245,249,.35)" font-weight="600">CÓDIGO</text>
+        <text x="220" y="159" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(241,245,249,.35)" font-weight="600">NOMBRE</text>
+        <text x="340" y="159" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(241,245,249,.35)" font-weight="600">BASE</text>
+        <text x="420" y="159" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(241,245,249,.35)" font-weight="600">ESTADO</text>
+
+        <!-- Filas de tabla con colores -->
+        <!-- Fila 1 -->
+        <rect x="125" y="167" width="375" height="28" rx="0" fill="rgba(13,217,179,.03)"/>
+        <text x="140" y="184" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.6)">COL-0842</text>
+        <rect x="216" y="174" width="12" height="12" rx="3" fill="#E74C3C" style="filter:drop-shadow(0 0 4px #E74C3C)"/>
+        <text x="234" y="184" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.7)">Rojo Carmín</text>
+        <text x="340" y="184" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)">Blanca</text>
+        <rect x="415" y="172" width="48" height="14" rx="7" fill="rgba(39,201,63,.12)" stroke="rgba(39,201,63,.3)" stroke-width="1"/>
+        <text x="439" y="182" font-family="JetBrains Mono, monospace" font-size="7" fill="#27C93F" text-anchor="middle">Activa</text>
+
+        <!-- Fila 2 -->
+        <rect x="125" y="195" width="375" height="28" rx="0" fill="transparent"/>
+        <text x="140" y="212" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.6)">COL-1205</text>
+        <rect x="216" y="202" width="12" height="12" rx="3" fill="#3498DB" style="filter:drop-shadow(0 0 4px #3498DB)"/>
+        <text x="234" y="212" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.7)">Azul Océano</text>
+        <text x="340" y="212" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)">Gris</text>
+        <rect x="415" y="200" width="48" height="14" rx="7" fill="rgba(39,201,63,.12)" stroke="rgba(39,201,63,.3)" stroke-width="1"/>
+        <text x="439" y="210" font-family="JetBrains Mono, monospace" font-size="7" fill="#27C93F" text-anchor="middle">Activa</text>
+
+        <!-- Fila 3 -->
+        <rect x="125" y="223" width="375" height="28" rx="0" fill="rgba(13,217,179,.03)"/>
+        <text x="140" y="240" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.6)">COL-0330</text>
+        <rect x="216" y="230" width="12" height="12" rx="3" fill="#2ECC71" style="filter:drop-shadow(0 0 4px #2ECC71)"/>
+        <text x="234" y="240" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.7)">Verde Esmeralda</text>
+        <text x="340" y="240" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)">Blanca</text>
+        <rect x="415" y="228" width="48" height="14" rx="7" fill="rgba(255,189,46,.1)" stroke="rgba(255,189,46,.3)" stroke-width="1"/>
+        <text x="439" y="238" font-family="JetBrains Mono, monospace" font-size="7" fill="#FFBD2E" text-anchor="middle">Draft</text>
+
+        <!-- Fila 4 -->
+        <rect x="125" y="251" width="375" height="28" rx="0" fill="transparent"/>
+        <text x="140" y="268" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.6)">COL-0917</text>
+        <rect x="216" y="258" width="12" height="12" rx="3" fill="#9B59B6" style="filter:drop-shadow(0 0 4px #9B59B6)"/>
+        <text x="234" y="268" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.7)">Violeta Profundo</text>
+        <text x="340" y="268" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)">Negra</text>
+        <rect x="415" y="256" width="48" height="14" rx="7" fill="rgba(39,201,63,.12)" stroke="rgba(39,201,63,.3)" stroke-width="1"/>
+        <text x="439" y="266" font-family="JetBrains Mono, monospace" font-size="7" fill="#27C93F" text-anchor="middle">Activa</text>
+
+        <!-- Fila 5 -->
+        <rect x="125" y="279" width="375" height="28" rx="0" fill="rgba(13,217,179,.03)"/>
+        <text x="140" y="296" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.6)">COL-1158</text>
+        <rect x="216" y="286" width="12" height="12" rx="3" fill="#F1C40F" style="filter:drop-shadow(0 0 4px #F1C40F)"/>
+        <text x="234" y="296" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.7)">Amarillo Solar</text>
+        <text x="340" y="296" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)">Blanca</text>
+        <rect x="415" y="284" width="48" height="14" rx="7" fill="rgba(39,201,63,.12)" stroke="rgba(39,201,63,.3)" stroke-width="1"/>
+        <text x="439" y="294" font-family="JetBrains Mono, monospace" font-size="7" fill="#27C93F" text-anchor="middle">Activa</text>
+
+        <!-- Paginación -->
+        <text x="140" y="370" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.3)">Mostrando 5 de 248 fórmulas</text>
+        <rect x="400" y="358" width="30" height="18" rx="4" fill="rgba(13,217,179,.12)" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+        <text x="415" y="370" font-family="JetBrains Mono, monospace" font-size="8" fill="#0DD9B3" text-anchor="middle">›</text>
+
+        <!-- Stats bottom -->
+        <rect x="125" y="392" width="375" height="28" rx="0" fill="rgba(241,245,249,.02)" stroke="rgba(241,245,249,.05)" stroke-width="0.5"/>
+        <text x="140" y="409" font-family="JetBrains Mono, monospace" font-size="7.5" fill="rgba(241,245,249,.3)">248 fórmulas  •  6 bases  •  última actualización: hace 2 min</text>
+      </svg>
+    </div>
+
+  </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Descripción ──────────────────────────────────────────── -->
+  <section class="psection" aria-labelledby="desc-heading">
+    <p class="psection__label">Sobre el proyecto</p>
+    <h2 class="psection__heading" id="desc-heading" data-reveal>¿Qué es este sistema?</h2>
+
+    <p class="pdesc__text" data-reveal>
+      El <strong style="color: var(--c-text); font-weight: 600;">Sistema de Fórmulas de Color</strong> es 
+      una aplicación web empresarial desarrollada a medida para un cliente del sector de pinturas. 
+      Permite a los operarios y gestores consultar rápidamente cualquier fórmula registrada en la base 
+      de datos centralizada, reduciendo significativamente los errores en la preparación de mezclas.
+    </p>
+
+    <p class="pdesc__text" data-reveal>
+      El sistema reemplazó un proceso manual basado en hojas de cálculo y registros físicos, 
+      consolidando toda la información en una interfaz web responsive accesible desde cualquier 
+      dispositivo en la red interna del cliente. Incluye gestión completa de registros (CRUD), 
+      búsqueda optimizada con filtros por código de color y tipo de base.
+    </p>
+
+    <!-- CRUD visual -->
+    <div class="pcrud">
+      <div class="pcrud__item" data-crud>
+        <div class="pcrud__letter">C</div>
+        <span class="pcrud__label">Create</span>
+        <span class="pcrud__desc">Alta de nuevas fórmulas</span>
+      </div>
+      <div class="pcrud__item" data-crud>
+        <div class="pcrud__letter">R</div>
+        <span class="pcrud__label">Read</span>
+        <span class="pcrud__desc">Consulta y búsqueda</span>
+      </div>
+      <div class="pcrud__item" data-crud>
+        <div class="pcrud__letter">U</div>
+        <span class="pcrud__label">Update</span>
+        <span class="pcrud__desc">Edición de registros</span>
+      </div>
+      <div class="pcrud__item" data-crud>
+        <div class="pcrud__letter">D</div>
+        <span class="pcrud__label">Delete</span>
+        <span class="pcrud__desc">Gestión de bajas</span>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Características ──────────────────────────────────────── -->
+  <section class="psection--alt" aria-labelledby="features-heading">
+    <div class="psection__inner">
+      <p class="psection__label">Funcionalidades</p>
+      <h2 class="psection__heading" id="features-heading" data-reveal>Características del sistema</h2>
+
+      <div class="pfeatures__grid">
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Búsqueda optimizada</h3>
+          <p class="pfeature__desc">Consulta en tiempo real con filtros por código de color, nombre y tipo de base. Resultados ordenables y paginados con rendimiento optimizado en MySQL.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-database" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">CRUD completo</h3>
+          <p class="pfeature__desc">Alta, consulta, edición y eliminación de fórmulas con validación en frontend y backend. Confirmaciones de seguridad para operaciones destructivas.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Diseño responsive</h3>
+          <p class="pfeature__desc">Interfaz adaptable a pantallas de escritorio, tablet y móvil. Accesible desde cualquier dispositivo dentro de la red interna del cliente.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Gestión de bases y pigmentos</h3>
+          <p class="pfeature__desc">Módulo dedicado a la administración de bases de pintura y pigmentos, con cantidades exactas por fórmula y unidades configurables.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Acceso restringido</h3>
+          <p class="pfeature__desc">Sistema de autenticación básico con roles diferenciados para operarios y administradores, limitando el acceso a operaciones críticas.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Reducción de errores</h3>
+          <p class="pfeature__desc">Al centralizar la información elimina discrepancias entre distintas versiones de fórmulas en papel, reduciendo los errores de preparación en planta.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Tech Stack ──────────────────────────────────────────── -->
+  <section class="psection" aria-labelledby="tech-heading">
+    <p class="psection__label">Tecnologías</p>
+    <h2 class="psection__heading" id="tech-heading" data-reveal>Stack utilizado</h2>
+
+    <div class="ptech__grid">
+      <span class="ptech__item" data-tech><i class="fab fa-php" aria-hidden="true"></i> PHP 8</span>
+      <span class="ptech__item" data-tech><i class="fas fa-database" aria-hidden="true"></i> MySQL 8</span>
+      <span class="ptech__item" data-tech><i class="fab fa-html5" aria-hidden="true"></i> HTML5</span>
+      <span class="ptech__item" data-tech><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</span>
+      <span class="ptech__item" data-tech><i class="fab fa-js-square" aria-hidden="true"></i> JavaScript ES6</span>
+      <span class="ptech__item" data-tech>PDO / Prepared Statements</span>
+      <span class="ptech__item" data-tech>AJAX / Fetch API</span>
+      <span class="ptech__item" data-tech><i class="fab fa-github" aria-hidden="true"></i> Git / GitHub</span>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <footer class="ppage-footer">
+    <div class="ppage-footer__text">
+      Proyecto desarrollado por <strong>Daniel Ortega Bello</strong> — thedaob
+    </div>
+    <nav class="ppage-footer__nav" aria-label="Navegación entre proyectos">
+      <a href="importordiscord.html" class="ppage-footer__btn ppage-footer__btn--prev">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Proyecto anterior
+      </a>
+      <a href="../index.html#projects" class="ppage-footer__btn ppage-footer__btn--ghost">
+        <i class="fas fa-th-large" aria-hidden="true"></i>
+        Portafolio
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+    /* ── IntersectionObserver Reveal ─────────────────── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+    document.querySelectorAll('[data-feature]').forEach((el, i) => {
+      el.style.transitionDelay = (i * 80) + 'ms';
+      io.observe(el);
+    });
+
+    document.querySelectorAll('[data-tech]').forEach((el, i) => {
+      el.style.transitionDelay = (i * 60) + 'ms';
+      io.observe(el);
+    });
+
+    document.querySelectorAll('[data-crud]').forEach((el, i) => {
+      el.style.transition = `opacity .6s cubic-bezier(.2,.8,.2,1) ${i * 100}ms, transform .6s cubic-bezier(.2,.8,.2,1) ${i * 100}ms`;
+      io.observe(el);
+    });
+
+    /* ── Navbar shrink on scroll ─────────────────────── */
+    const nav = document.querySelector('.pnav');
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 40 ? '12px 40px' : '18px 40px';
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

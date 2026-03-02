@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ImportorDiscord — Bot de Automatización | Daniel Ortega</title>
+  <meta name="description" content="Bot Python que automatiza moderación, gestión de comunidad y comandos personalizados vía Discord API con autenticación segura.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────────────────────
+       DESIGN SYSTEM
+    ───────────────────────────────────────────────────────── */
+    :root {
+      --c-bg:         #0a1628;
+      --c-bg2:        #0e1e38;
+      --c-surface:    rgba(16,28,52,.78);
+      --c-primary:    #0DD9B3;
+      --c-primary-d:  #09A889;
+      --c-primary-l:  #5FFFDA;
+      --c-discord:    #7289DA;
+      --c-discord-l:  #a5b4fc;
+      --c-border:     rgba(13,217,179,.18);
+      --c-border-h:   rgba(13,217,179,.55);
+      --c-text:       #f1f5f9;
+      --c-text-mid:   rgba(241,245,249,.72);
+      --c-text-muted: rgba(241,245,249,.42);
+      --f-display:    'Syne', sans-serif;
+      --f-body:       'DM Sans', sans-serif;
+      --f-mono:       'JetBrains Mono', monospace;
+      --ease:         cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* ─── Reset + Base ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--f-body);
+      background: var(--c-bg);
+      color: var(--c-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Scrollbar personalizado ───────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--c-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--c-border-h); border-radius: 3px; }
+
+    /* ─────────────────────────────────────────────────────
+       NAV BAR
+    ───────────────────────────────────────────────────── */
+    .pnav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,22,40,.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(13,217,179,.08);
+      transition: padding .4s var(--ease);
+    }
+
+    .pnav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--c-primary);
+      transition: gap .3s var(--ease), opacity .3s;
+      letter-spacing: .04em;
+    }
+    .pnav__back:hover { gap: 14px; opacity: .85; }
+
+    .pnav__back-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--c-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem;
+      transition: background .3s, border-color .3s;
+    }
+    .pnav__back:hover .pnav__back-icon {
+      background: rgba(13,217,179,.12);
+      border-color: var(--c-border-h);
+    }
+
+    .pnav__logo {
+      font-family: var(--f-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--c-text-muted);
+      letter-spacing: .04em;
+    }
+    .pnav__logo span { color: var(--c-primary); }
+
+    /* ─────────────────────────────────────────────────────
+       HERO DEL PROYECTO
+    ───────────────────────────────────────────────────── */
+    .phero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      overflow: hidden;
+    }
+
+    /* Fondo animado */
+    .phero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(114,137,218,.12) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 80% at 10% 80%, rgba(13,217,179,.08) 0%, transparent 60%),
+        linear-gradient(180deg, #0a1628 0%, #0e1e38 100%);
+    }
+
+    /* Grid decorativa */
+    .phero__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(114,137,218,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(114,137,218,.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse 70% 70% at 60% 40%, #000 30%, transparent 100%);
+    }
+
+    /* Partículas decorativas SVG */
+    .phero__deco {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(550px, 45vw);
+      opacity: .9;
+    }
+
+    .phero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .phero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 18px;
+      background: rgba(114,137,218,.12);
+      border: 1px solid rgba(114,137,218,.28);
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c-discord-l);
+      margin-bottom: 28px;
+      animation: fadeInDown .8s var(--ease) both;
+    }
+
+    .phero__kicker-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--c-discord);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(114,137,218,.7); }
+      50% { box-shadow: 0 0 0 6px rgba(114,137,218,0); }
+    }
+
+    .phero__title {
+      font-family: var(--f-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: var(--c-text);
+      margin-bottom: 10px;
+      animation: fadeInLeft .9s var(--ease) .1s both;
+    }
+
+    .phero__title-accent {
+      display: block;
+      background: linear-gradient(135deg, #7289DA 0%, var(--c-discord-l) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .phero__subtitle {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--c-text-mid);
+      margin-bottom: 36px;
+      line-height: 1.65;
+      font-style: italic;
+      animation: fadeIn 1s var(--ease) .3s both;
+    }
+
+    .phero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 44px;
+      animation: fadeInUp .9s var(--ease) .4s both;
+    }
+
+    .phero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm, 10px);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+
+    .phero__badge--cat {
+      background: rgba(114,137,218,.14);
+      color: var(--c-discord-l);
+      border: 1px solid rgba(114,137,218,.3);
+    }
+
+    .phero__badge--tech {
+      background: rgba(13,217,179,.1);
+      color: var(--c-primary);
+      border: 1px solid var(--c-border);
+      font-family: var(--f-mono);
+    }
+
+    .phero__ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp .9s var(--ease) .55s both;
+    }
+
+    .btn-primary, .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 30px;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: all .4s var(--ease);
+      border: 2px solid;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-d) 100%);
+      color: #0a1628;
+      border-color: var(--c-primary);
+      box-shadow: 0 8px 28px rgba(13,217,179,.25);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(13,217,179,.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--c-text-mid);
+      border-color: rgba(241,245,249,.15);
+    }
+    .btn-ghost:hover {
+      border-color: var(--c-border-h);
+      color: var(--c-primary);
+      background: rgba(13,217,179,.06);
+      transform: translateY(-3px);
+    }
+
+    /* Decoración hero — diagrama bot */
+    .phero__diagram {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity:0; transform: translateY(-20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity:0; transform: translateX(-30px); }
+      to   { opacity:1; transform: translateX(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECCIONES DE CONTENIDO
+    ───────────────────────────────────────────────────── */
+    .psection {
+      padding: 90px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .psection--alt {
+      background: rgba(14,30,56,.5);
+      max-width: 100%;
+      padding: 90px 0;
+    }
+    .psection--alt .psection__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Etiqueta de sección */
+    .psection__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: 18px;
+    }
+    .psection__label::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--c-primary);
+      opacity: .7;
+    }
+
+    .psection__heading {
+      font-family: var(--f-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 32px;
+      letter-spacing: -.02em;
+    }
+
+    /* ─── Descripción ───────────────────────────────────── */
+    .pdesc__text {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--c-text-mid);
+      font-weight: 300;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    /* ─── Grid de características ────────────────────── */
+    .pfeatures__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 12px;
+    }
+
+    .pfeature {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 16px;
+      padding: 24px 26px;
+      backdrop-filter: blur(14px);
+      transition: border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
+      /* Reveal */
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .pfeature.is-visible {
+      opacity: 1; transform: translateY(0);
+    }
+    .pfeature:hover {
+      border-color: var(--c-border-h);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13,217,179,.08);
+    }
+
+    .pfeature__icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(13,217,179,.12);
+      border: 1px solid var(--c-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: var(--c-primary);
+      margin-bottom: 16px;
+    }
+
+    .pfeature__title {
+      font-family: var(--f-display);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 8px;
+      letter-spacing: -.01em;
+    }
+
+    .pfeature__desc {
+      font-size: .85rem;
+      line-height: 1.65;
+      color: var(--c-text-muted);
+      font-weight: 300;
+    }
+
+    /* ─── Tech Stack ────────────────────────────────────── */
+    .ptech__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .ptech__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      backdrop-filter: blur(14px);
+      font-family: var(--f-mono);
+      font-size: .82rem;
+      color: var(--c-text-mid);
+      transition: all .4s var(--ease);
+      opacity: 0; transform: translateY(20px);
+    }
+    .ptech__item.is-visible { opacity: 1; transform: translateY(0); }
+    .ptech__item:hover {
+      background: rgba(13,217,179,.1);
+      border-color: var(--c-border-h);
+      color: var(--c-primary);
+      transform: translateY(-3px);
+    }
+
+    .ptech__item i { font-size: 1.1rem; }
+
+    /* ─── Bloque de código decorativo ──────────────────── */
+    .pcode {
+      background: #0d1b30;
+      border: 1px solid rgba(114,137,218,.2);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 40px 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .pcode__header {
+      padding: 14px 20px;
+      background: rgba(114,137,218,.08);
+      border-bottom: 1px solid rgba(114,137,218,.12);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pcode__dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .pcode__dot:nth-child(1) { background: #FF5F56; }
+    .pcode__dot:nth-child(2) { background: #FFBD2E; }
+    .pcode__dot:nth-child(3) { background: #27C93F; }
+
+    .pcode__filename {
+      margin-left: 10px;
+      font-family: var(--f-mono);
+      font-size: .75rem;
+      color: var(--c-text-muted);
+    }
+
+    .pcode__body {
+      padding: 28px 30px;
+      font-family: var(--f-mono);
+      font-size: .82rem;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+
+    .tok-keyword  { color: #c792ea; }
+    .tok-fn       { color: #82aaff; }
+    .tok-string   { color: #c3e88d; }
+    .tok-comment  { color: #546e7a; font-style: italic; }
+    .tok-var      { color: #f07178; }
+    .tok-num      { color: #f78c6c; }
+    .tok-op       { color: var(--c-primary); }
+    .tok-dec      { color: #FFBD2E; }
+
+    /* ─── Footer de página ───────────────────────────── */
+    .ppage-footer {
+      padding: 60px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(241,245,249,.06);
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .ppage-footer__text {
+      font-size: .85rem;
+      color: var(--c-text-muted);
+    }
+    .ppage-footer__text strong {
+      color: var(--c-text);
+      font-family: var(--f-display);
+    }
+
+    .ppage-footer__nav {
+      display: flex;
+      gap: 16px;
+    }
+
+    .ppage-footer__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: all .35s var(--ease);
+    }
+
+    .ppage-footer__btn--ghost {
+      border: 1px solid var(--c-border);
+      color: var(--c-text-muted);
+    }
+    .ppage-footer__btn--ghost:hover {
+      border-color: var(--c-border-h);
+      color: var(--c-primary);
+      background: rgba(13,217,179,.06);
+    }
+
+    .ppage-footer__btn--next {
+      background: rgba(13,217,179,.1);
+      border: 1px solid var(--c-border);
+      color: var(--c-primary);
+    }
+    .ppage-footer__btn--next:hover {
+      background: rgba(13,217,179,.2);
+      border-color: var(--c-border-h);
+      transform: translateX(4px);
+    }
+
+    /* ─── Separador decorativo ──────────────────────── */
+    .pdivider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(13,217,179,.2), transparent);
+      margin: 0;
+      border: none;
+    }
+
+    /* ─── Reveal animations ─────────────────────────── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+
+    /* ─── Responsive ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .pnav { padding: 14px 20px; }
+      .phero { padding: 110px 20px 70px; min-height: auto; }
+      .phero__deco { display: none; }
+      .psection { padding: 70px 20px; }
+      .psection--alt .psection__inner { padding: 0 20px; }
+      .pfeatures__grid { grid-template-columns: 1fr; }
+      .ppage-footer { padding: 40px 20px; flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      [data-reveal], .pfeature, .ptech__item { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navegación ─────────────────────────────────────────── -->
+  <nav class="pnav" role="navigation" aria-label="Navegación del proyecto">
+    <a href="../index.html" class="pnav__back">
+      <span class="pnav__back-icon" aria-hidden="true">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      Volver al portafolio
+    </a>
+    <span class="pnav__logo"><span>The</span>daob</span>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <section class="phero" aria-label="Presentación del proyecto">
+
+    <div class="phero__bg" aria-hidden="true"></div>
+    <div class="phero__grid" aria-hidden="true"></div>
+
+    <div class="phero__content">
+
+      <div class="phero__kicker">
+        <span class="phero__kicker-dot" aria-hidden="true"></span>
+        Proyecto real · Backend · Bot
+      </div>
+
+      <h1 class="phero__title">
+        Importor
+        <em class="phero__title-accent">Discord</em>
+      </h1>
+
+      <p class="phero__subtitle">
+        Bot de automatización para servidores de Discord
+      </p>
+
+      <div class="phero__badges">
+        <span class="phero__badge phero__badge--cat">
+          <i class="fas fa-robot" aria-hidden="true"></i>
+          Automatización
+        </span>
+        <span class="phero__badge phero__badge--cat">
+          <i class="fas fa-server" aria-hidden="true"></i>
+          Backend
+        </span>
+        <span class="phero__badge phero__badge--cat">
+          <i class="fas fa-comments" aria-hidden="true"></i>
+          Bot
+        </span>
+        <span class="phero__badge phero__badge--tech">
+          <i class="fab fa-python" aria-hidden="true"></i>
+          Python
+        </span>
+        <span class="phero__badge phero__badge--tech">
+          Discord API
+        </span>
+      </div>
+
+      <div class="phero__ctas">
+        <a href="https://github.com/Thedaob" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          Ver en GitHub
+        </a>
+        <a href="../index.html#projects" class="btn-ghost">
+          <i class="fas fa-th-large" aria-hidden="true"></i>
+          Todos los proyectos
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Diagrama decorativo del bot -->
+    <div class="phero__deco" aria-hidden="true">
+      <svg class="phero__diagram" viewBox="0 0 520 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Fondo del diagrama -->
+        <rect x="10" y="10" width="500" height="440" rx="20" fill="rgba(16,28,52,.6)" stroke="rgba(114,137,218,.2)" stroke-width="1"/>
+
+        <!-- Título -->
+        <text x="36" y="50" font-family="JetBrains Mono, monospace" font-size="11" fill="rgba(114,137,218,.5)">bot_architecture.py</text>
+
+        <!-- Discord server (izq) -->
+        <rect x="36" y="75" width="135" height="85" rx="12" fill="rgba(114,137,218,.12)" stroke="rgba(114,137,218,.4)" stroke-width="1"/>
+        <text x="103" y="107" font-family="JetBrains Mono, monospace" font-size="9" fill="#7289DA" text-anchor="middle">Discord</text>
+        <text x="103" y="122" font-family="JetBrains Mono, monospace" font-size="9" fill="#7289DA" text-anchor="middle">Server</text>
+        <text x="103" y="148" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(165,180,252,.5)" text-anchor="middle">Gateway API</text>
+
+        <!-- Flecha Discord → Bot -->
+        <path d="M172 117 L205 117" stroke="rgba(13,217,179,.6)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <polygon points="205,113 213,117 205,121" fill="rgba(13,217,179,.6)"/>
+
+        <!-- Bot Core (centro) -->
+        <rect x="213" y="60" width="160" height="115" rx="14" fill="rgba(13,217,179,.08)" stroke="rgba(13,217,179,.5)" stroke-width="1.5"/>
+        <text x="293" y="90" font-family="JetBrains Mono, monospace" font-size="10" fill="#0DD9B3" text-anchor="middle" font-weight="600">ImportorBot</text>
+        <text x="293" y="110" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(13,217,179,.6)" text-anchor="middle">commands.Bot()</text>
+        <rect x="228" y="120" width="130" height="20" rx="5" fill="rgba(13,217,179,.1)"/>
+        <text x="293" y="134" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.5)" text-anchor="middle">on_ready() ✓ active</text>
+        <rect x="228" y="145" width="130" height="20" rx="5" fill="rgba(13,217,179,.06)"/>
+        <text x="293" y="159" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(241,245,249,.4)" text-anchor="middle">token auth ✓ secure</text>
+
+        <!-- Flecha Bot → Handlers -->
+        <path d="M293 175 L293 205" stroke="rgba(13,217,179,.5)" stroke-width="1.5"/>
+        <polygon points="289,205 293,213 297,205" fill="rgba(13,217,179,.5)"/>
+
+        <!-- Handler boxes -->
+        <!-- Commands -->
+        <rect x="155" y="215" width="100" height="50" rx="10" fill="rgba(130,170,255,.1)" stroke="rgba(130,170,255,.3)" stroke-width="1"/>
+        <text x="205" y="238" font-family="JetBrains Mono, monospace" font-size="8" fill="#82aaff" text-anchor="middle">Commands</text>
+        <text x="205" y="253" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(130,170,255,.5)" text-anchor="middle">@bot.command()</text>
+
+        <!-- Events -->
+        <rect x="265" y="215" width="100" height="50" rx="10" fill="rgba(199,125,255,.1)" stroke="rgba(199,125,255,.3)" stroke-width="1"/>
+        <text x="315" y="238" font-family="JetBrains Mono, monospace" font-size="8" fill="#c792ea" text-anchor="middle">Events</text>
+        <text x="315" y="253" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(199,125,255,.5)" text-anchor="middle">@bot.event()</text>
+
+        <!-- Moderation -->
+        <rect x="375" y="215" width="100" height="50" rx="10" fill="rgba(255,189,46,.08)" stroke="rgba(255,189,46,.25)" stroke-width="1"/>
+        <text x="425" y="238" font-family="JetBrains Mono, monospace" font-size="8" fill="#FFBD2E" text-anchor="middle">Moderation</text>
+        <text x="425" y="253" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(255,189,46,.5)" text-anchor="middle">auto mod</text>
+
+        <!-- Líneas Bot → Handlers -->
+        <path d="M260 213 L205 215" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+        <path d="M293 213 L315 215" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+        <path d="M325 213 L425 215" stroke="rgba(13,217,179,.3)" stroke-width="1"/>
+
+        <!-- Flecha Commands → Action -->
+        <path d="M205 265 L205 295" stroke="rgba(130,170,255,.4)" stroke-width="1" stroke-dasharray="3 2"/>
+        <polygon points="201,295 205,302 209,295" fill="rgba(130,170,255,.4)"/>
+
+        <!-- Actions box -->
+        <rect x="36" y="302" width="430" height="40" rx="10" fill="rgba(13,217,179,.05)" stroke="rgba(13,217,179,.15)" stroke-width="1"/>
+        <text x="251" y="319" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(13,217,179,.6)" text-anchor="middle">response = await ctx.send(message)  |  await member.kick()  |  await channel.purge()</text>
+        <text x="251" y="332" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(13,217,179,.35)" text-anchor="middle">↳ Real-time Discord API response</text>
+
+        <!-- Status indicators -->
+        <circle cx="50" cy="395" r="5" fill="#27C93F"/>
+        <text x="63" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">bot.is_ready()</text>
+        <circle cx="165" cy="395" r="5" fill="#0DD9B3"/>
+        <text x="178" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">latency: ~42ms</text>
+        <circle cx="285" cy="395" r="5" fill="#7289DA"/>
+        <text x="298" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">guilds: connected</text>
+        <circle cx="405" cy="395" r="5" fill="#FFBD2E"/>
+        <text x="418" y="399" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(241,245,249,.5)">token: ✓</text>
+
+        <!-- Auth block (top right) -->
+        <rect x="373" y="75" width="100" height="85" rx="12" fill="rgba(255,189,46,.08)" stroke="rgba(255,189,46,.2)" stroke-width="1"/>
+        <text x="423" y="107" font-family="JetBrains Mono, monospace" font-size="8" fill="#FFBD2E" text-anchor="middle">Token Auth</text>
+        <text x="423" y="122" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(255,189,46,.5)" text-anchor="middle">.env secure</text>
+        <text x="423" y="148" font-family="JetBrains Mono, monospace" font-size="7" fill="rgba(255,189,46,.4)" text-anchor="middle">OAuth2 ✓</text>
+
+        <!-- Línea Auth → Bot -->
+        <path d="M373 117 L373 117 L374 117" stroke="rgba(255,189,46,.0)" stroke-width="1"/>
+        <path d="M374 117 L375 117" stroke="rgba(255,189,46,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <!-- Corrección: flecha de Auth al bot -->
+        <path d="M373 117 L380 117" stroke="rgba(255,189,46,.0)"/>
+        <path d="M374 117 L374 67 L293 67 L293 60" stroke="rgba(255,189,46,.3)" stroke-width="1" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+
+  </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Descripción ──────────────────────────────────────────── -->
+  <section class="psection" aria-labelledby="desc-heading">
+    <p class="psection__label">Sobre el proyecto</p>
+    <h2 class="psection__heading" id="desc-heading" data-reveal>¿Qué es ImportorDiscord?</h2>
+
+    <p class="pdesc__text" data-reveal>
+      <strong style="color: var(--c-text); font-weight: 600;">ImportorDiscord</strong> es un bot desarrollado 
+      en Python que automatiza tareas dentro de servidores de Discord utilizando la API oficial de Discord. 
+      El sistema está diseñado para simplificar la gestión diaria de comunidades digitales, eliminando 
+      trabajo repetitivo y garantizando consistencia en las operaciones del servidor.
+    </p>
+
+    <p class="pdesc__text" data-reveal>
+      Utiliza autenticación mediante token seguro almacenado en variables de entorno, lo que garantiza 
+      que las credenciales nunca quedan expuestas en el código fuente. La arquitectura está orientada 
+      a la escalabilidad, permitiendo añadir nuevos comandos y módulos sin necesidad de reestructurar 
+      el core del sistema.
+    </p>
+
+    <!-- Bloque de código decorativo -->
+    <div class="pcode" data-reveal>
+      <div class="pcode__header">
+        <div class="pcode__dot"></div>
+        <div class="pcode__dot"></div>
+        <div class="pcode__dot"></div>
+        <span class="pcode__filename">importor_bot.py</span>
+      </div>
+      <div class="pcode__body">
+        <pre><span class="tok-keyword">import</span> discord
+<span class="tok-keyword">from</span> discord.ext <span class="tok-keyword">import</span> commands
+<span class="tok-keyword">import</span> os
+
+<span class="tok-comment"># Configuración con token seguro en .env</span>
+<span class="tok-var">intents</span> <span class="tok-op">=</span> discord.Intents.<span class="tok-fn">default</span>()
+<span class="tok-var">intents</span>.message_content <span class="tok-op">=</span> <span class="tok-keyword">True</span>
+<span class="tok-var">bot</span> <span class="tok-op">=</span> commands.<span class="tok-fn">Bot</span>(command_prefix<span class="tok-op">=</span><span class="tok-string">"!"</span>, intents<span class="tok-op">=</span><span class="tok-var">intents</span>)
+
+<span class="tok-dec">@bot.event</span>
+<span class="tok-keyword">async def</span> <span class="tok-fn">on_ready</span>():
+    <span class="tok-fn">print</span>(<span class="tok-string">f"Bot activo: {bot.user}"</span>)
+
+<span class="tok-dec">@bot.command</span>(name<span class="tok-op">=</span><span class="tok-string">"limpiar"</span>)
+<span class="tok-dec">@commands.has_permissions</span>(manage_messages<span class="tok-op">=</span><span class="tok-keyword">True</span>)
+<span class="tok-keyword">async def</span> <span class="tok-fn">clear</span>(ctx, amount: <span class="tok-fn">int</span>):
+    <span class="tok-keyword">await</span> ctx.channel.<span class="tok-fn">purge</span>(limit<span class="tok-op">=</span><span class="tok-var">amount</span>)
+    <span class="tok-keyword">await</span> ctx.<span class="tok-fn">send</span>(<span class="tok-string">f"✅ {amount} mensajes eliminados."</span>)
+
+<span class="tok-var">bot</span>.<span class="tok-fn">run</span>(os.<span class="tok-fn">getenv</span>(<span class="tok-string">"DISCORD_TOKEN"</span>))</pre>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Características ──────────────────────────────────────── -->
+  <section class="psection--alt" aria-labelledby="features-heading">
+    <div class="psection__inner">
+      <p class="psection__label">Funcionalidades</p>
+      <h2 class="psection__heading" id="features-heading" data-reveal>Características principales</h2>
+
+      <div class="pfeatures__grid">
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Autenticación segura</h3>
+          <p class="pfeature__desc">Token de Discord almacenado en variables de entorno <code style="font-family:var(--f-mono);font-size:.78em;color:var(--c-primary);">.env</code>, sin exposición en el código fuente ni en repositorios.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-terminal" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Sistema de comandos</h3>
+          <p class="pfeature__desc">Comandos personalizados con prefijos definibles, control de permisos por rol y respuestas dinámicas en tiempo real al canal correspondiente.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-gavel" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Moderación automática</h3>
+          <p class="pfeature__desc">Gestión automática de miembros, limpieza de mensajes en masa, silenciado temporal y registro de acciones de moderación con timestamp.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Procesamiento en tiempo real</h3>
+          <p class="pfeature__desc">Conexión persistente al gateway de Discord con reconexión automática ante interrupciones, garantizando disponibilidad continua del bot.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-users-cog" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Gestión de comunidad</h3>
+          <p class="pfeature__desc">Bienvenidas automáticas a nuevos miembros, asignación de roles por defecto y mensajes de confirmación en canales privados de moderación.</p>
+        </div>
+
+        <div class="pfeature" data-feature>
+          <div class="pfeature__icon"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></div>
+          <h3 class="pfeature__title">Arquitectura extensible</h3>
+          <p class="pfeature__desc">Estructura modular basada en <em>cogs</em> de discord.py, que permite añadir funcionalidades sin afectar el funcionamiento del sistema existente.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="pdivider">
+
+  <!-- ── Tech Stack ──────────────────────────────────────────── -->
+  <section class="psection" aria-labelledby="tech-heading">
+    <p class="psection__label">Tecnologías</p>
+    <h2 class="psection__heading" id="tech-heading" data-reveal>Stack utilizado</h2>
+
+    <div class="ptech__grid">
+      <span class="ptech__item" data-tech><i class="fab fa-python" aria-hidden="true"></i> Python 3.10+</span>
+      <span class="ptech__item" data-tech>discord.py 2.x</span>
+      <span class="ptech__item" data-tech><i class="fas fa-key" aria-hidden="true"></i> python-dotenv</span>
+      <span class="ptech__item" data-tech>Discord Gateway API</span>
+      <span class="ptech__item" data-tech>OAuth2 Token Auth</span>
+      <span class="ptech__item" data-tech><i class="fab fa-github" aria-hidden="true"></i> Git / GitHub</span>
+      <span class="ptech__item" data-tech>asyncio</span>
+      <span class="ptech__item" data-tech>Intents API</span>
+    </div>
+  </section>
+
+  <!-- ── Footer de página ─────────────────────────────────────── -->
+  <footer class="ppage-footer">
+    <div class="ppage-footer__text">
+      Proyecto desarrollado por <strong>Daniel Ortega Bello</strong> — thedaob
+    </div>
+    <nav class="ppage-footer__nav" aria-label="Navegación entre proyectos">
+      <a href="../index.html#projects" class="ppage-footer__btn ppage-footer__btn--ghost">
+        <i class="fas fa-th-large" aria-hidden="true"></i>
+        Portafolio
+      </a>
+      <a href="sistema-formulas-color.html" class="ppage-footer__btn ppage-footer__btn--next">
+        Siguiente proyecto
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+    /* ── Reveal Observer ─────────────────────────────────── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+    /* Features con delay escalonado */
+    document.querySelectorAll('[data-feature]').forEach((el, i) => {
+      el.style.transitionDelay = (i * 80) + 'ms';
+      io.observe(el);
+    });
+
+    /* Techs con delay escalonado */
+    document.querySelectorAll('[data-tech]').forEach((el, i) => {
+      el.style.transitionDelay = (i * 60) + 'ms';
+      io.observe(el);
+    });
+
+    /* ── Navbar scroll effect ─────────────────────────────── */
+    const nav = document.querySelector('.pnav');
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 40 ? '12px 40px' : '18px 40px';
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
