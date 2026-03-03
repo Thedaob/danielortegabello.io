@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Daniel Ortega — RPA Developer & Automation Specialist</title>
-    <meta name="keywords" content="RPA, Automation Anywhere, Python, Automatización, RPA Developer, Colombia">
-    <meta name="description" content="Daniel Ortega — Desarrollador RPA especializado en automatización de procesos, Python, APIs y Business Intelligence.">
+    <meta name="keywords" content="RPA, Automation Anywhere, Python, Process Automation, RPA Developer, Colombia">
+    <meta name="description" content="Daniel Ortega — RPA Developer specialized in process automation, Python, APIs and Business Intelligence.">
     <link rel="canonical" href="https://danielortegabello.io/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Daniel Ortega — RPA Developer & Automation Specialist">
@@ -61,10 +61,13 @@
             </div>
             <a href="" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a>
         </div>
-        <button id="theme-toggle" aria-label="Cambiar modo oscuro">
+        <button id="theme-toggle" aria-label="Toggle dark mode">
             <span class="icon sun">💡</span>
             <span class="icon moon">🕯️</span>
           </button>
+        <button id="lang-toggle" aria-label="Toggle language" title="Switch language">
+            <span id="lang-label">Ñ</span>
+        </button>
     </nav>
     <!-- Navbar End -->
      
@@ -95,7 +98,7 @@
                         <img class="img-fluid rounded-circle" src="img/PHOTO PROFILE.jpg" alt="Daniel Ortega Bello">
                         <div class="profile-status">
                             <span class="status-dot"></span>
-                            <span class="status-text">Disponible</span>
+                            <span class="status-text" data-en="Available" data-es="Disponible">Available</span>
                         </div>
                     </div>
 
@@ -107,7 +110,7 @@
                             </div>
                             <div class="stat-content">
                                 <h4>30+</h4>
-                                <p>Proyectos</p>
+                                <p data-en="Projects" data-es="Proyectos">Projects</p>
                             </div>
                         </div>
                         <div class="stat-card stat-card-2">
@@ -116,7 +119,7 @@
                             </div>
                             <div class="stat-content">
                                 <h4>15+</h4>
-                                <p>Clientes</p>
+                                <p data-en="Clients" data-es="Clientes">Clients</p>
                             </div>
                         </div>
                     </div>
@@ -128,7 +131,7 @@
                 <!-- Greeting with Animation -->
                 <div class="greeting-badge">
                     <span class="wave-emoji">👋</span>
-                    <span>¡Hola! Soy</span>
+                    <span data-en="Hi! I'm" data-es="¡Hola! Soy">Hi! I'm</span>
                 </div>
                 
                 <!-- Main Title with Glitch Effect -->
@@ -153,26 +156,26 @@
 
 
                 <!-- Value Proposition -->
-               <p class="hero-description">
-                    Convierto procesos manuales en sistemas automatizados eficientes, confiables y escalables.
+               <p class="hero-description" data-en="I turn manual processes into efficient, reliable and scalable automated systems." data-es="Convierto procesos manuales en sistemas automatizados eficientes, confiables y escalables.">
+                    I turn manual processes into efficient, reliable and scalable automated systems.
                 </p>
 
                 <!-- CTA Buttons with Enhanced Design -->
                 <div class="hero-cta-section">
                     <div class="cta-buttons">
                         <a href="Daniel Ortega.pdf" class="btn-primary-custom">
-                            <span class="btn-text">Descargar CV</span>
+                            <span class="btn-text" data-en="Download CV" data-es="Descargar CV">Download CV</span>
                             <i class="fas fa-download ml-2"></i>
                         </a>
-                        <a href="https://wa.me/573126331586?text=Hola%20Daniel%2C%20vi%20tu%20web%20y%20me%20gustar%C3%ADa%20que%20habl%C3%A1ramos%20sobre%20una%20oportunidad%20%F0%9F%91%8B" target="_blank" class="btn-whatsapp-custom">
+                        <a href="https://wa.me/573126331586?text=Hi%20Daniel%2C%20I%20visited%20your%20website%20and%20I%27d%20love%20to%20chat%20about%20an%20opportunity%20%F0%9F%91%8B" target="_blank" class="btn-whatsapp-custom">
                             <i class="fab fa-whatsapp"></i>
-                            <span class="btn-text">WhatsApp</span>
+                            <span class="btn-text" data-en="WhatsApp" data-es="WhatsApp">WhatsApp</span>
                         </a>
                     </div>
 
                     <!-- Social Links with Enhanced Design -->
                     <div class="social-links-hero">
-                        <span class="social-label">Encuéntrame en</span>
+                        <span class="social-label" data-en="Find me on" data-es="Encuéntrame en">Find me on</span>
                         <div class="social-buttons-group">
                             <a href="https://github.com/Thedaob" target="_blank" class="social-btn" data-tooltip="GitHub">
                                 <i class="fab fa-github"></i>
@@ -194,7 +197,7 @@
                 <div class="achievement-badges">
                     <div class="badge-item">
                         <i class="fas fa-certificate"></i>
-                        <span>Ingeniero de Sistemas</span>
+                        <span data-en="Systems Engineer" data-es="Ingeniero de Sistemas">Systems Engineer</span>
                     </div>
                     <div class="badge-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -202,7 +205,7 @@
                     </div>
                     <div class="badge-item pulse-badge">
                         <i class="fas fa-bolt"></i>
-                        <span>Disponible para proyectos</span>
+                        <span data-en="Open to projects" data-es="Disponible para proyectos">Open to projects</span>
                     </div>
                 </div>
             </div>
@@ -214,7 +217,7 @@
         <div class="scroll-mouse">
             <div class="scroll-wheel"></div>
         </div>
-        <span>Scroll para explorar</span>
+        <span data-en="Scroll to explore" data-es="Scroll para explorar">Scroll to explore</span>
     </div>
 </div>
 <!-- Header End -->
@@ -237,15 +240,15 @@
     <header class="proj-header" data-proj-reveal>
       <p class="proj-kicker">
         <span class="proj-kicker__line"></span>
-        Portafolio seleccionado
+        <span data-en="Selected Portfolio" data-es="Portafolio seleccionado">Selected Portfolio</span>
         <span class="proj-kicker__line"></span>
       </p>
       <h2 class="proj-heading">
-        Proyectos
-        <em class="proj-heading__accent">Destacados</em>
+        <span data-en="Featured" data-es="Proyectos">Featured</span>
+        <em class="proj-heading__accent" data-en="Projects" data-es="Destacados">Projects</em>
       </h2>
-      <p class="proj-subheading">
-        Soluciones reales para tu negocio.
+      <p class="proj-subheading" data-en="Real solutions for your business." data-es="Soluciones reales para tu negocio.">
+        Real solutions for your business.
       </p>
     </header>
 
@@ -277,16 +280,15 @@
             <div class="proj-card__meta">
               <span class="proj-card__badge proj-card__badge--bot">
                 <i class="fas fa-robot" aria-hidden="true"></i>
-                Automatización · Backend · Bot
+                <span data-en="Automation · Backend · Bot" data-es="Automatización · Backend · Bot">Automation · Backend · Bot</span>
               </span>
-              <span class="proj-card__type">Bot de Discord</span>
+              <span class="proj-card__type" data-en="Discord Bot" data-es="Bot de Discord">Discord Bot</span>
             </div>
 
             <h3 class="proj-card__title">ImportorDiscord</h3>
 
-            <p class="proj-card__desc">
-              Bot Python que automatiza moderación, gestión de comunidad y 
-              comandos personalizados vía Discord API con autenticación segura por token.
+            <p class="proj-card__desc" data-en="Python bot that automates moderation, community management and custom commands via Discord API with secure token authentication." data-es="Bot Python que automatiza moderación, gestión de comunidad y comandos personalizados vía Discord API con autenticación segura por token.">
+              Python bot that automates moderation, community management and custom commands via Discord API with secure token authentication.
             </p>
 
             <!-- Stack de tecnologías -->
@@ -300,7 +302,7 @@
 
             <!-- CTA -->
             <div class="proj-card__cta" aria-hidden="true">
-              <span class="proj-card__cta-text">Ver proyecto</span>
+              <span class="proj-card__cta-text" data-en="View project" data-es="Ver proyecto">View project</span>
               <span class="proj-card__cta-arrow">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -346,16 +348,15 @@
             <div class="proj-card__meta">
               <span class="proj-card__badge proj-card__badge--web">
                 <i class="fas fa-database" aria-hidden="true"></i>
-                Sistema empresarial · Web App · BD
+                <span data-en="Enterprise System · Web App · DB" data-es="Sistema empresarial · Web App · BD">Enterprise System · Web App · DB</span>
               </span>
-              <span class="proj-card__type">Aplicación empresarial</span>
+              <span class="proj-card__type" data-en="Enterprise Application" data-es="Aplicación empresarial">Enterprise Application</span>
             </div>
 
-            <h3 class="proj-card__title">Sistema de Fórmulas de Color</h3>
+            <h3 class="proj-card__title" data-en="Color Formula System" data-es="Sistema de Fórmulas de Color">Color Formula System</h3>
 
-            <p class="proj-card__desc">
-              Plataforma web para consultar, crear y administrar fórmulas de 
-              color desde base de datos centralizada, optimizando procesos internos.
+            <p class="proj-card__desc" data-en="Web platform to query, create and manage color formulas from a centralized database, optimizing internal processes." data-es="Plataforma web para consultar, crear y administrar fórmulas de color desde base de datos centralizada, optimizando procesos internos.">
+              Web platform to query, create and manage color formulas from a centralized database, optimizing internal processes.
             </p>
 
             <!-- Stack de tecnologías -->
@@ -370,7 +371,7 @@
 
             <!-- CTA -->
             <div class="proj-card__cta" aria-hidden="true">
-              <span class="proj-card__cta-text">Ver proyecto</span>
+              <span class="proj-card__cta-text" data-en="View project" data-es="Ver proyecto">View project</span>
               <span class="proj-card__cta-arrow">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -430,19 +431,16 @@
       <div class="proj-card__meta">
         <span class="proj-card__badge proj-card__badge--bot">
           <i class="fas fa-robot" aria-hidden="true"></i>
-          RPA · Sector Financiero · Automatización
+          <span data-en="RPA · Finance · Automation" data-es="RPA · Sector Financiero · Automatización">RPA · Finance · Automation</span>
         </span>
-        <span class="proj-card__type">Bot empresarial</span>
+        <span class="proj-card__type" data-en="Enterprise Bot" data-es="Bot empresarial">Enterprise Bot</span>
       </div>
 
-      <h3 class="proj-card__title">Bot RPA — Cruce y Validación de Datos</h3>
+      <h3 class="proj-card__title" data-en="RPA Bot — Data Cross-Validation" data-es="Bot RPA — Cruce y Validación de Datos">RPA Bot — Data Cross-Validation</h3>
 
-      <p class="proj-card__desc">
-        Automatización integral de cruces y validación de información proveniente
-        de múltiples fuentes heterogéneas. Implementado de inicio a fin para un
-        cliente del sector financiero: reduce el tiempo operativo de
-        <strong>1h 29min a ~20 min por usuario</strong>, eliminando errores de
-        digitación y garantizando trazabilidad completa del proceso.
+      <p class="proj-card__desc" data-en="Comprehensive automation of data cross-referencing and validation from multiple heterogeneous sources. Implemented end-to-end for a financial sector client: reduces processing time from 1h 29min to ~20 min per user, eliminating typing errors and ensuring full process traceability." data-es="Automatización integral de cruces y validación de información proveniente de múltiples fuentes heterogéneas. Implementado de inicio a fin para un cliente del sector financiero: reduce el tiempo operativo de 1h 29min a ~20 min por usuario, eliminando errores de digitación y garantizando trazabilidad completa del proceso.">
+        Comprehensive automation of data cross-referencing and validation from multiple heterogeneous sources. Implemented end-to-end for a financial sector client: reduces processing time from
+        <strong>1h 29min to ~20 min per user</strong>, eliminating typing errors and ensuring full process traceability.
       </p>
 
       <!-- Métricas de impacto -->
@@ -461,7 +459,7 @@
           min-width: 90px;
         ">
           <div style="font-size: 1rem; font-weight: 700; color: #3b82f6; line-height:1.1;">~78%</div>
-          <div style="font-size: 0.65rem; color: #94a3b8; margin-top:2px;">Reducción de tiempo</div>
+          <div style="font-size: 0.65rem; color: #94a3b8; margin-top:2px;" data-en="Time reduction" data-es="Reducción de tiempo">Time reduction</div>
         </div>
         <div style="
           background: rgba(16,185,129,0.12);
@@ -472,7 +470,7 @@
           min-width: 90px;
         ">
           <div style="font-size: 1rem; font-weight: 700; color: #10b981; line-height:1.1;">20 min</div>
-          <div style="font-size: 0.65rem; color: #94a3b8; margin-top:2px;">Post-automatización</div>
+          <div style="font-size: 0.65rem; color: #94a3b8; margin-top:2px;" data-en="Post-automation" data-es="Post-automatización">Post-automation</div>
         </div>
         <div style="
           background: rgba(245,158,11,0.12);
@@ -483,7 +481,7 @@
           min-width: 90px;
         ">
           <div style="font-size: 1rem; font-weight: 700; color: #f59e0b; line-height:1.1;">E2E</div>
-          <div style="font-size: 0.65rem; color: #94a3b8; margin-top:2px;">Implementación</div>
+          <div style="font-size: 0.65rem; color: #94a3b8; margin-top:2px;" data-en="Implementation" data-es="Implementación">Implementation</div>
         </div>
       </div>
 
@@ -575,18 +573,15 @@
           gap: 6px;
         ">
           <i class="fas fa-shield-alt" aria-hidden="true"></i>
-          RPA · Mercado de Capitales · Resiliencia
+          <span data-en="RPA · Capital Markets · Resilience" data-es="RPA · Mercado de Capitales · Resiliencia">RPA · Capital Markets · Resilience</span>
         </span>
-        <span class="proj-card__type">Bot empresarial</span>
+        <span class="proj-card__type" data-en="Enterprise Bot" data-es="Bot empresarial">Enterprise Bot</span>
       </div>
 
-      <h3 class="proj-card__title">Bot RPA — Carga Automática a Sistema Financiero</h3>
+      <h3 class="proj-card__title" data-en="RPA Bot — Automated Upload to Financial System" data-es="Bot RPA — Carga Automática a Sistema Financiero">RPA Bot — Automated Upload to Financial System</h3>
 
-      <p class="proj-card__desc">
-        Automatización robusta del ingreso de información al sistema de un depósito
-        centralizado de valores del mercado colombiano de capitales. El bot ejecuta
-        validaciones previas, gestiona excepciones de forma inteligente y genera
-        registros de auditoría, garantizando confiabilidad ante variaciones del sistema.
+      <p class="proj-card__desc" data-en="Robust automation of data entry into a centralized securities depository system in the Colombian capital market. The bot performs pre-validations, handles exceptions intelligently and generates audit logs, ensuring reliability against system variations." data-es="Automatización robusta del ingreso de información al sistema de un depósito centralizado de valores del mercado colombiano de capitales. El bot ejecuta validaciones previas, gestiona excepciones de forma inteligente y genera registros de auditoría, garantizando confiabilidad ante variaciones del sistema.">
+        Robust automation of data entry into a centralized securities depository system in the Colombian capital market. The bot performs pre-validations, handles exceptions intelligently and generates audit logs, ensuring reliability against system variations.
       </p>
 
       <!-- Características clave tipo chips -->
@@ -596,42 +591,10 @@
         gap: 6px;
         margin: 10px 0 14px;
       ">
-        <span style="
-          background: rgba(16,185,129,0.1);
-          color: #10b981;
-          border: 1px solid rgba(16,185,129,0.25);
-          border-radius: 20px;
-          padding: 3px 10px;
-          font-size: 0.68rem;
-          font-weight: 500;
-        ">✓ Validación previa de datos</span>
-        <span style="
-          background: rgba(16,185,129,0.1);
-          color: #10b981;
-          border: 1px solid rgba(16,185,129,0.25);
-          border-radius: 20px;
-          padding: 3px 10px;
-          font-size: 0.68rem;
-          font-weight: 500;
-        ">✓ Manejo de excepciones</span>
-        <span style="
-          background: rgba(16,185,129,0.1);
-          color: #10b981;
-          border: 1px solid rgba(16,185,129,0.25);
-          border-radius: 20px;
-          padding: 3px 10px;
-          font-size: 0.68rem;
-          font-weight: 500;
-        ">✓ Log de auditoría</span>
-        <span style="
-          background: rgba(16,185,129,0.1);
-          color: #10b981;
-          border: 1px solid rgba(16,185,129,0.25);
-          border-radius: 20px;
-          padding: 3px 10px;
-          font-size: 0.68rem;
-          font-weight: 500;
-        ">✓ Recuperación ante fallos</span>
+        <span style="background: rgba(16,185,129,0.1);color: #10b981;border: 1px solid rgba(16,185,129,0.25);border-radius: 20px;padding: 3px 10px;font-size: 0.68rem;font-weight: 500;" data-en="✓ Pre-data validation" data-es="✓ Validación previa de datos">✓ Pre-data validation</span>
+        <span style="background: rgba(16,185,129,0.1);color: #10b981;border: 1px solid rgba(16,185,129,0.25);border-radius: 20px;padding: 3px 10px;font-size: 0.68rem;font-weight: 500;" data-en="✓ Exception handling" data-es="✓ Manejo de excepciones">✓ Exception handling</span>
+        <span style="background: rgba(16,185,129,0.1);color: #10b981;border: 1px solid rgba(16,185,129,0.25);border-radius: 20px;padding: 3px 10px;font-size: 0.68rem;font-weight: 500;" data-en="✓ Audit log" data-es="✓ Log de auditoría">✓ Audit log</span>
+        <span style="background: rgba(16,185,129,0.1);color: #10b981;border: 1px solid rgba(16,185,129,0.25);border-radius: 20px;padding: 3px 10px;font-size: 0.68rem;font-weight: 500;" data-en="✓ Failure recovery" data-es="✓ Recuperación ante fallos">✓ Failure recovery</span>
       </div>
 
       <!-- Stack de tecnologías -->
@@ -667,8 +630,8 @@
 
     <!-- ── Pie de sección ────────────────────────────────── -->
     <footer class="proj-footer" data-proj-reveal data-delay="300">
-      <a href="https://github.com/Thedaob" target="_blank" rel="noopener noreferrer" class="proj-footer__link">
-        Ver más en GitHub
+      <a href="https://github.com/Thedaob" target="_blank" rel="noopener noreferrer" class="proj-footer__link" data-en="View more on GitHub" data-es="Ver más en GitHub">
+        View more on GitHub
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -730,11 +693,11 @@
                         Systems Engineer &amp; Web Developer
                     </div>
 
-                    <p class="about-bio">
-                        Ingeniero de sistemas en formación con sólida orientación al <strong>desarrollo web</strong> y la <strong>automatización de procesos</strong>. Cuento con experiencia en JavaScript, PHP y gestión de bases de datos, aplicando buenas prácticas de desarrollo, control de versiones y trabajo colaborativo con Git y GitHub.
+                    <p class="about-bio" data-en="Systems engineer in training with a strong focus on <strong>web development</strong> and <strong>process automation</strong>. I have experience in JavaScript, PHP and database management, applying development best practices, version control and collaborative work with Git and GitHub." data-es="Ingeniero de sistemas en formación con sólida orientación al <strong>desarrollo web</strong> y la <strong>automatización de procesos</strong>. Cuento con experiencia en JavaScript, PHP y gestión de bases de datos, aplicando buenas prácticas de desarrollo, control de versiones y trabajo colaborativo con Git y GitHub.">
+                        Systems engineer in training with a strong focus on <strong>web development</strong> and <strong>process automation</strong>. I have experience in JavaScript, PHP and database management, applying development best practices, version control and collaborative work with Git and GitHub.
                     </p>
-                    <p class="about-bio">
-                        Me destaco por mi capacidad analítica, aprendizaje continuo y enfoque en resultados — diseñando soluciones tecnológicas eficientes, escalables y alineadas con las necesidades del negocio.
+                    <p class="about-bio" data-en="I stand out for my analytical thinking, continuous learning and results-driven approach — designing efficient, scalable technology solutions aligned with business needs." data-es="Me destaco por mi capacidad analítica, aprendizaje continuo y enfoque en resultados — diseñando soluciones tecnológicas eficientes, escalables y alineadas con las necesidades del negocio.">
+                        I stand out for my analytical thinking, continuous learning and results-driven approach — designing efficient, scalable technology solutions aligned with business needs.
                     </p>
 
                     <!-- Info grid -->
@@ -742,21 +705,21 @@
                         <div class="about-info-item">
                             <span class="about-info-icon"><i class="fas fa-user"></i></span>
                             <div>
-                                <span class="about-info-label">Name</span>
+                                <span class="about-info-label" data-en="Name" data-es="Nombre">Name</span>
                                 <span class="about-info-value">Daniel Ortega Bello</span>
                             </div>
                         </div>
                         <div class="about-info-item">
                             <span class="about-info-icon"><i class="fas fa-briefcase"></i></span>
                             <div>
-                                <span class="about-info-label">Role</span>
-                                <span class="about-info-value">Systems Engineer (in training)</span>
+                                <span class="about-info-label" data-en="Role" data-es="Rol">Role</span>
+                                <span class="about-info-value" data-en="Systems Engineer (in training)" data-es="Ingeniero de Sistemas (en formación)">Systems Engineer (in training)</span>
                             </div>
                         </div>
                         <div class="about-info-item">
                             <span class="about-info-icon"><i class="fas fa-map-marker-alt"></i></span>
                             <div>
-                                <span class="about-info-label">Location</span>
+                                <span class="about-info-label" data-en="Location" data-es="Ubicación">Location</span>
                                 <span class="about-info-value">Colombia 🇨🇴</span>
                             </div>
                         </div>
@@ -770,15 +733,15 @@
                         <div class="about-info-item">
                             <span class="about-info-icon"><i class="fas fa-phone"></i></span>
                             <div>
-                                <span class="about-info-label">Phone</span>
+                                <span class="about-info-label" data-en="Phone" data-es="Teléfono">Phone</span>
                                 <span class="about-info-value">+57 312 633 1586</span>
                             </div>
                         </div>
                         <div class="about-info-item">
                             <span class="about-info-icon"><i class="fas fa-check-circle"></i></span>
                             <div>
-                                <span class="about-info-label">Availability</span>
-                                <span class="about-info-value about-available">Open to opportunities</span>
+                                <span class="about-info-label" data-en="Availability" data-es="Disponibilidad">Availability</span>
+                                <span class="about-info-value about-available" data-en="Open to opportunities" data-es="Disponible para oportunidades">Open to opportunities</span>
                             </div>
                         </div>
                     </div>
@@ -813,7 +776,7 @@
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Quality</h1>
-            <h1 class="position-absolute text-uppercase text-primary">Education & Experience</h1>
+            <h1 class="position-absolute text-uppercase text-primary" data-en="Education & Experience" data-es="Educación y Experiencia">Education & Experience</h1>
         </div>
         <div class="row align-items-start">
             <div class="col-lg-6">
@@ -823,14 +786,14 @@
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
                         <h5 class="font-weight-bold mb-1">Software Programming</h5>
                         <p class="mb-2"><strong>Servicio Nacional de Aprendizaje</strong> | <small>2019 - 2020</small></p>
-                        <p>Formación técnica orientada al desarrollo de software, con énfasis en lógica de programación, algoritmos y fundamentos de desarrollo. Durante este proceso adquirí experiencia práctica en Java, JavaScript, PHP y diseño de bases de datos, consolidando una base sólida en desarrollo de aplicaciones y resolución de problemas técnicos.</p>
+                        <p data-en="Technical training focused on software development, with emphasis on programming logic, algorithms and development fundamentals. During this process I gained hands-on experience in Java, JavaScript, PHP and database design, building a solid foundation in application development and technical problem solving." data-es="Formación técnica orientada al desarrollo de software, con énfasis en lógica de programación, algoritmos y fundamentos de desarrollo. Durante este proceso adquirí experiencia práctica en Java, JavaScript, PHP y diseño de bases de datos, consolidando una base sólida en desarrollo de aplicaciones y resolución de problemas técnicos.">Technical training focused on software development, with emphasis on programming logic, algorithms and development fundamentals. During this process I gained hands-on experience in Java, JavaScript, PHP and database design, building a solid foundation in application development and technical problem solving.</p>
                     </div>
                     
                     <div class="position-relative mb-4">
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                        <h5 class="font-weight-bold mb-1">Ingeniero de sistemas</h5>
+                        <h5 class="font-weight-bold mb-1" data-en="Systems Engineering" data-es="Ingeniero de sistemas">Systems Engineering</h5>
                         <p class="mb-2"><strong>CUN: Corporación Unificada Nacional de Educación Superior</strong> | <small>2023 - Present</small></p>
-                        <p>Estudiante de Ingeniería de Sistemas, actualmente en etapa avanzada de formación. He desarrollado competencias en análisis de sistemas, bases de datos, desarrollo web y automatización de procesos. Mi enfoque académico y práctico está orientado a la aplicación real del conocimiento en entornos empresariales y tecnológicos.</p>
+                        <p data-en="Systems Engineering student, currently in an advanced stage. I have developed skills in systems analysis, databases, web development and process automation. My academic and practical approach is oriented towards real-world application of knowledge in business and technology environments." data-es="Estudiante de Ingeniería de Sistemas, actualmente en etapa avanzada de formación. He desarrollado competencias en análisis de sistemas, bases de datos, desarrollo web y automatización de procesos. Mi enfoque académico y práctico está orientado a la aplicación real del conocimiento en entornos empresariales y tecnológicos.">Systems Engineering student, currently in an advanced stage. I have developed skills in systems analysis, databases, web development and process automation. My academic and practical approach is oriented towards real-world application of knowledge in business and technology environments.</p>
                     </div>
         
                     <div class="position-relative mb-4">
@@ -842,28 +805,28 @@
                             <li>Bot Developer (Automation 360)</li>
                             <li>Prompt Engineering for Data Extraction and Analysis (Beta)</li>
                         </ul>
-                        <p>Certificaciones especializadas en desarrollo de automatización robótica de procesos, con enfoque en Automation 360 y técnicas avanzadas de extracción de datos mediante ingeniería de prompts.</p>
+                        <p data-en="Specialized certifications in robotic process automation development, focusing on Automation 360 and advanced data extraction techniques through prompt engineering." data-es="Certificaciones especializadas en desarrollo de automatización robótica de procesos, con enfoque en Automation 360 y técnicas avanzadas de extracción de datos mediante ingeniería de prompts.">Specialized certifications in robotic process automation development, focusing on Automation 360 and advanced data extraction techniques through prompt engineering.</p>
                     </div>
         
                     <div class="position-relative mb-4">
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
                         <h5 class="font-weight-bold mb-1">Introduction to Cybersecurity</h5>
                         <p class="mb-2"><strong>Cisco</strong> | <small>2024</small></p>
-                        <p>Certificación que valida conocimientos introductorios en ciberseguridad, incluyendo implicaciones globales de amenazas cibernéticas en diversas industrias. Competencias en detección y defensa contra vulnerabilidades, así como comprensión del panorama profesional en seguridad informática.</p>
+                        <p data-en="Certification validating introductory cybersecurity knowledge, including global implications of cyber threats across various industries. Competencies in detecting and defending against vulnerabilities, as well as understanding the professional landscape in information security." data-es="Certificación que valida conocimientos introductorios en ciberseguridad, incluyendo implicaciones globales de amenazas cibernéticas en diversas industrias. Competencias en detección y defensa contra vulnerabilidades, así como comprensión del panorama profesional en seguridad informática.">Certification validating introductory cybersecurity knowledge, including global implications of cyber threats across various industries. Competencies in detecting and defending against vulnerabilities, as well as understanding the professional landscape in information security.</p>
                     </div>
                     
                     <div class="position-relative mb-4">
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
                         <h5 class="font-weight-bold mb-1">Continuous Learning – Technology & Software Development</h5>
                         <p class="mb-2"><strong>Online Learning</strong> | <small>&infin;</small></p>
-                        <p>Formación complementaria enfocada en tecnologías actuales y prácticas del mercado. Áreas de estudio:</p>
+                        <p data-en="Supplementary training focused on current technologies and market practices. Areas of study:" data-es="Formación complementaria enfocada en tecnologías actuales y prácticas del mercado. Áreas de estudio:">Supplementary training focused on current technologies and market practices. Areas of study:</p>
                         <ul>
-                            <li>Automatización y buenas prácticas de desarrollo</li>
-                            <li>Git y GitHub (control de versiones)</li>
+                            <li data-en="Automation and development best practices" data-es="Automatización y buenas prácticas de desarrollo">Automation and development best practices</li>
+                            <li data-en="Git and GitHub (version control)" data-es="Git y GitHub (control de versiones)">Git and GitHub (version control)</li>
                             <li>Python</li>
                             <li>DevOps fundamentals</li>
-                            <li>Inteligencia Artificial (enfoque práctico)</li>
-                            <li>Marketing digital y ecosistema tecnológico</li>
+                            <li data-en="Artificial Intelligence (practical focus)" data-es="Inteligencia Artificial (enfoque práctico)">Artificial Intelligence (practical focus)</li>
+                            <li data-en="Digital marketing and tech ecosystem" data-es="Marketing digital y ecosistema tecnológico">Digital marketing and tech ecosystem</li>
                           </ul>  
                     </div>
                 </div>
@@ -875,34 +838,30 @@
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
                         <h5 class="font-weight-bold mb-1">RPA & Automation Analyst</h5>
                         <p class="mb-2"><strong>Globaltek Security</strong> | <small>2023 – 2025 (1 year, 9 months)</small></p>
-                        <p>
-                            Participación activa en proyectos de automatización empresarial, trabajando con agentes RPA para la optimización de procesos operativos y administrativos.
-                          </p>
-                          <p>Responsabilidades clave</p>
+                        <p data-en="Active participation in enterprise automation projects, working with RPA agents to optimize operational and administrative processes." data-es="Participación activa en proyectos de automatización empresarial, trabajando con agentes RPA para la optimización de procesos operativos y administrativos.">Active participation in enterprise automation projects, working with RPA agents to optimize operational and administrative processes.</p>
+                          <p data-en="Key responsibilities" data-es="Responsabilidades clave">Key responsibilities</p>
                           <ul>
-                            <li>Diseño y desarrollo de automatizaciones RPA a nivel profesional.</li>
-                            <li>Integración y gestión de bases de datos para procesos automatizados.</li>
-                            <li>Diseño y estructuración de soluciones ERP orientadas a la eficiencia operativa.</li>
-                            <li>Análisis de procesos y mejora continua mediante automatización.</li>
-                            <li>Soporte y optimización de flujos automatizados en entornos productivos.</li>
+                            <li data-en="Design and development of professional-grade RPA automations." data-es="Diseño y desarrollo de automatizaciones RPA a nivel profesional.">Design and development of professional-grade RPA automations.</li>
+                            <li data-en="Integration and management of databases for automated processes." data-es="Integración y gestión de bases de datos para procesos automatizados.">Integration and management of databases for automated processes.</li>
+                            <li data-en="Design and structuring of ERP solutions oriented towards operational efficiency." data-es="Diseño y estructuración de soluciones ERP orientadas a la eficiencia operativa.">Design and structuring of ERP solutions oriented towards operational efficiency.</li>
+                            <li data-en="Process analysis and continuous improvement through automation." data-es="Análisis de procesos y mejora continua mediante automatización.">Process analysis and continuous improvement through automation.</li>
+                            <li data-en="Support and optimization of automated workflows in production environments." data-es="Soporte y optimización de flujos automatizados en entornos productivos.">Support and optimization of automated workflows in production environments.</li>
                           </ul>
                         </div>
                         <div class="position-relative mb-4">
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
                         <h5 class="font-weight-bold mb-1">System Administrator</h5>
                         <p class="mb-2"><strong>Farmacias Alianza Express</strong> | <small>2016 - 2019</small></p>
-                        <p>
-                            Responsable de la administración y mantenimiento de la infraestructura tecnológica de la organización.
-                          </p>
-                          <p>Funciones principales</p>
+                        <p data-en="Responsible for the administration and maintenance of the organization's technology infrastructure." data-es="Responsable de la administración y mantenimiento de la infraestructura tecnológica de la organización.">Responsible for the administration and maintenance of the organization's technology infrastructure.</p>
+                          <p data-en="Main responsibilities" data-es="Funciones principales">Main responsibilities</p>
                           <ul>
-                            <li>Gestión y mantenimiento de equipos de cómputo.</li>
-                            <li>Administración básica de bases de datos.</li>
-                            <li>Optimización y automatización de procesos internos.</li>
-                            <li>Soporte técnico a usuarios y sistemas operativos.</li>
+                            <li data-en="Management and maintenance of computer equipment." data-es="Gestión y mantenimiento de equipos de cómputo.">Management and maintenance of computer equipment.</li>
+                            <li data-en="Basic database administration." data-es="Administración básica de bases de datos.">Basic database administration.</li>
+                            <li data-en="Optimization and automation of internal processes." data-es="Optimización y automatización de procesos internos.">Optimization and automation of internal processes.</li>
+                            <li data-en="Technical support for users and operating systems." data-es="Soporte técnico a usuarios y sistemas operativos.">Technical support for users and operating systems.</li>
                           </ul>
-                          <p>
-                            Adicionalmente, participación en procesos operativos del sector farmacéutico, aportando soporte tecnológico a áreas críticas del negocio.
+                          <p data-en="Additionally, active participation in pharmaceutical sector operational processes, providing technology support to critical business areas." data-es="Adicionalmente, participación en procesos operativos del sector farmacéutico, aportando soporte tecnológico a áreas críticas del negocio.">
+                            Additionally, active participation in pharmaceutical sector operational processes, providing technology support to critical business areas.
                           </p>
                         </div>
 
@@ -910,22 +869,20 @@
                         <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
                         <h5 class="font-weight-bold mb-1">Web Designer & Web Developer</h5>
                         <p class="mb-2"><strong>Personal Projects</strong> | <small>2023</small></p>
-                        <p>
-                            Diseño, desarrollo y optimización de sitios web utilizando tecnologías modernas y buenas prácticas de desarrollo.
-                          </p>
-                          <p>Tecnologías y herramientas</p>
+                        <p data-en="Design, development and optimization of websites using modern technologies and development best practices." data-es="Diseño, desarrollo y optimización de sitios web utilizando tecnologías modernas y buenas prácticas de desarrollo.">Design, development and optimization of websites using modern technologies and development best practices.</p>
+                          <p data-en="Technologies and tools" data-es="Tecnologías y herramientas">Technologies and tools</p>
                           <ul>
-                            <li>HTML, CSS y JavaScript.</li>
+                            <li>HTML, CSS and JavaScript.</li>
                             <li>MySQL.</li>
-                            <li>Git y GitHub (control de versiones).</li>
+                            <li data-en="Git and GitHub (version control)." data-es="Git y GitHub (control de versiones).">Git and GitHub (version control).</li>
                             <li>Visual Studio Code.</li>
-                            <li>Canvas y ChatGPT.</li>
+                            <li>Canva and ChatGPT.</li>
                             <li>Wix, WordPress, Weebly, Zapier, Bubble.</li>
                             <li>Figma, Canva, Photoshop, Illustrator.</li>
-                            <li>Optimización para SEO y conversiones.</li>
+                            <li data-en="SEO and conversion optimization." data-es="Optimización para SEO y conversiones.">SEO and conversion optimization.</li>
                           </ul>
-                          <p>
-                            Experiencia en la creación de soluciones web funcionales, mantenimiento de sitios existentes y optimización del rendimiento y la estructura del código.
+                          <p data-en="Experience creating functional web solutions, maintaining existing sites and optimizing performance and code structure." data-es="Experiencia en la creación de soluciones web funcionales, mantenimiento de sitios existentes y optimización del rendimiento y la estructura del código.">
+                            Experience creating functional web solutions, maintaining existing sites and optimizing performance and code structure.
                           </p>
                     </div> 
                 </div>
@@ -949,7 +906,7 @@
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
-            <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
+            <h1 class="position-absolute text-uppercase text-primary" data-en="My Skills" data-es="Mis Habilidades">My Skills</h1>
         </div>
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -1153,110 +1110,110 @@
 <div class="container-fluid pt-5" id="service">
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
-            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Servicios</h1>
-            <h1 class="position-absolute text-uppercase text-primary">Servicios Profesionales</h1>
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Services</h1>
+            <h1 class="position-absolute text-uppercase text-primary" data-en="Professional Services" data-es="Servicios Profesionales">Professional Services</h1>
         </div>
         <div class="row pb-3">
-            <!-- Automatización de Procesos -->
+            <!-- Process Automation -->
             <div class="col-lg-4 col-md-6 text-center mb-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <i class="fa fa-2x fa-cogs service-icon bg-primary text-white mr-3"></i>
-                    <h4 class="font-weight-bold m-0">Automatización de Procesos</h4>
+                    <h4 class="font-weight-bold m-0" data-en="Process Automation" data-es="Automatización de Procesos">Process Automation</h4>
                 </div>
-                <p>Automatizo tareas repetitivas que consumen tiempo y generan errores: carga de datos, reportes, gestión de inventarios, conciliaciones y procesos administrativos.</p>
-                <p class="text-left small"><strong>Qué hago exactamente:</strong></p>
+                <p data-en="I automate repetitive tasks that consume time and generate errors: data uploads, reports, inventory management, reconciliations and administrative processes." data-es="Automatizo tareas repetitivas que consumen tiempo y generan errores: carga de datos, reportes, gestión de inventarios, conciliaciones y procesos administrativos.">I automate repetitive tasks that consume time and generate errors: data uploads, reports, inventory management, reconciliations and administrative processes.</p>
+                <p class="text-left small"><strong data-en="What I do exactly:" data-es="Qué hago exactamente:">What I do exactly:</strong></p>
                 <ul class="text-left small">
-                    <li>Automatización con herramientas RPA y scripts personalizados</li>
-                    <li>Integración entre Excel, sistemas internos y plataformas web</li>
-                    <li>Reducción de errores humanos y tiempos operativos</li>
-                    <li>Documentación clara para auditoría y escalabilidad</li>
+                    <li data-en="Automation with RPA tools and custom scripts" data-es="Automatización con herramientas RPA y scripts personalizados">Automation with RPA tools and custom scripts</li>
+                    <li data-en="Integration between Excel, internal systems and web platforms" data-es="Integración entre Excel, sistemas internos y plataformas web">Integration between Excel, internal systems and web platforms</li>
+                    <li data-en="Reduction of human errors and operating times" data-es="Reducción de errores humanos y tiempos operativos">Reduction of human errors and operating times</li>
+                    <li data-en="Clear documentation for audit and scalability" data-es="Documentación clara para auditoría y escalabilidad">Clear documentation for audit and scalability</li>
                 </ul>
-                <a class="border-bottom border-primary text-decoration-none" href="https://medium.com/p/e7a9c7b16266/edit">Leer Más</a>
+                <a class="border-bottom border-primary text-decoration-none" href="https://medium.com/p/e7a9c7b16266/edit" data-en="Read More" data-es="Leer Más">Read More</a>
             </div>
 
-            <!-- Diseño y Desarrollo Web -->
+            <!-- Web Development -->
             <div class="col-lg-4 col-md-6 text-center mb-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
-                    <h4 class="font-weight-bold m-0">Desarrollo Web Profesional</h4>
+                    <h4 class="font-weight-bold m-0" data-en="Professional Web Development" data-es="Desarrollo Web Profesional">Professional Web Development</h4>
                 </div>
-                <p>Diseño y desarrollo sitios web modernos, rápidos y optimizados para conversión, adaptados a las necesidades reales del negocio.</p>
-                <p class="text-left small"><strong>Incluye:</strong></p>
+                <p data-en="I design and develop modern, fast and conversion-optimized websites tailored to real business needs." data-es="Diseño y desarrollo sitios web modernos, rápidos y optimizados para conversión, adaptados a las necesidades reales del negocio.">I design and develop modern, fast and conversion-optimized websites tailored to real business needs.</p>
+                <p class="text-left small"><strong data-en="Includes:" data-es="Incluye:">Includes:</strong></p>
                 <ul class="text-left small">
-                    <li>Sitios corporativos y landing pages profesionales</li>
-                    <li>WordPress o desarrollo personalizado (HTML, CSS, JS)</li>
-                    <li>Diseño responsive y optimizado para SEO</li>
-                    <li>Enfoque en experiencia de usuario y objetivos comerciales</li>
+                    <li data-en="Corporate sites and professional landing pages" data-es="Sitios corporativos y landing pages profesionales">Corporate sites and professional landing pages</li>
+                    <li data-en="WordPress or custom development (HTML, CSS, JS)" data-es="WordPress o desarrollo personalizado (HTML, CSS, JS)">WordPress or custom development (HTML, CSS, JS)</li>
+                    <li data-en="Responsive design optimized for SEO" data-es="Diseño responsive y optimizado para SEO">Responsive design optimized for SEO</li>
+                    <li data-en="Focus on user experience and business goals" data-es="Enfoque en experiencia de usuario y objetivos comerciales">Focus on user experience and business goals</li>
                 </ul>
-                <a class="border-bottom border-primary text-decoration-none" href="https://github.com/Thedaob">Leer Más</a>
+                <a class="border-bottom border-primary text-decoration-none" href="https://github.com/Thedaob" data-en="Read More" data-es="Leer Más">Read More</a>
             </div>
 
-            <!-- Soluciones para Farmacias -->
+            <!-- Pharmacy Solutions -->
             <div class="col-lg-4 col-md-6 text-center mb-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <i class="fa fa-2x fa-medkit service-icon bg-primary text-white mr-3"></i>
-                    <h4 class="font-weight-bold m-0">Soluciones para Droguerías</h4>
+                    <h4 class="font-weight-bold m-0" data-en="Solutions for Pharmacies" data-es="Soluciones para Droguerías">Solutions for Pharmacies</h4>
                 </div>
-                <p>Implemento y optimizo soluciones tecnológicas para droguerías, enfocadas en control, cumplimiento y eficiencia operativa.</p>
-                <p class="text-left small"><strong>Servicios clave:</strong></p>
+                <p data-en="I implement and optimize technology solutions for pharmacies, focused on control, compliance and operational efficiency." data-es="Implemento y optimizo soluciones tecnológicas para droguerías, enfocadas en control, cumplimiento y eficiencia operativa.">I implement and optimize technology solutions for pharmacies, focused on control, compliance and operational efficiency.</p>
+                <p class="text-left small"><strong data-en="Key services:" data-es="Servicios clave:">Key services:</strong></p>
                 <ul class="text-left small">
-                    <li>Soporte y optimización de software de ventas</li>
-                    <li>Automatización de reportes y control de inventarios</li>
-                    <li>Implementación de procesos de calidad y seguridad laboral</li>
-                    <li>Acompañamiento técnico y operativo</li>
+                    <li data-en="Support and optimization of point-of-sale software" data-es="Soporte y optimización de software de ventas">Support and optimization of point-of-sale software</li>
+                    <li data-en="Automated reports and inventory control" data-es="Automatización de reportes y control de inventarios">Automated reports and inventory control</li>
+                    <li data-en="Quality and workplace safety process implementation" data-es="Implementación de procesos de calidad y seguridad laboral">Quality and workplace safety process implementation</li>
+                    <li data-en="Technical and operational support" data-es="Acompañamiento técnico y operativo">Technical and operational support</li>
                 </ul>
-                <a class="border-bottom border-primary text-decoration-none" href="https://medium.com/@danielortegabello/transforma-tu-farmacia-servicios-tecnol%C3%B3gicos-para-potenciar-tu-negocio-8f29eb370b7f?postPublishedType=initial">Leer Más</a>
+                <a class="border-bottom border-primary text-decoration-none" href="https://medium.com/@danielortegabello/transforma-tu-farmacia-servicios-tecnol%C3%B3gicos-para-potenciar-tu-negocio-8f29eb370b7f?postPublishedType=initial" data-en="Read More" data-es="Leer Más">Read More</a>
             </div>
 
-            <!-- Soporte IT -->
+            <!-- IT Support -->
             <div class="col-lg-4 col-md-6 text-center mb-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <i class="fa fa-2x fa-tools service-icon bg-primary text-white mr-3"></i>
-                    <h4 class="font-weight-bold m-0">Soporte IT y Optimización</h4>
+                    <h4 class="font-weight-bold m-0" data-en="IT Support & Optimization" data-es="Soporte IT y Optimización">IT Support & Optimization</h4>
                 </div>
-                <p>Brindo soporte técnico integral para empresas que necesitan estabilidad, seguridad y orden en su infraestructura tecnológica.</p>
-                <p class="text-left small"><strong>Incluye:</strong></p>
+                <p data-en="I provide comprehensive technical support for companies that need stability, security and order in their technology infrastructure." data-es="Brindo soporte técnico integral para empresas que necesitan estabilidad, seguridad y orden en su infraestructura tecnológica.">I provide comprehensive technical support for companies that need stability, security and order in their technology infrastructure.</p>
+                <p class="text-left small"><strong data-en="Includes:" data-es="Incluye:">Includes:</strong></p>
                 <ul class="text-left small">
-                    <li>Mantenimiento preventivo y correctivo</li>
-                    <li>Optimización de equipos y sistemas</li>
-                    <li>Gestión básica de redes y seguridad</li>
-                    <li>Documentación técnica y buenas prácticas</li>
+                    <li data-en="Preventive and corrective maintenance" data-es="Mantenimiento preventivo y correctivo">Preventive and corrective maintenance</li>
+                    <li data-en="Equipment and system optimization" data-es="Optimización de equipos y sistemas">Equipment and system optimization</li>
+                    <li data-en="Basic network and security management" data-es="Gestión básica de redes y seguridad">Basic network and security management</li>
+                    <li data-en="Technical documentation and best practices" data-es="Documentación técnica y buenas prácticas">Technical documentation and best practices</li>
                 </ul>
-                <a class="border-bottom border-primary text-decoration-none" href="https://github.com/Thedaob">Leer Más</a>
+                <a class="border-bottom border-primary text-decoration-none" href="https://github.com/Thedaob" data-en="Read More" data-es="Leer Más">Read More</a>
             </div>
 
-            <!-- SEO y Presencia Digital -->
+            <!-- SEO -->
             <div class="col-lg-4 col-md-6 text-center mb-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3"></i>
-                    <h4 class="font-weight-bold m-0">SEO y Presencia Digital</h4>
+                    <h4 class="font-weight-bold m-0" data-en="SEO & Digital Presence" data-es="SEO y Presencia Digital">SEO & Digital Presence</h4>
                 </div>
-                <p>Mejoro la visibilidad digital de empresas y profesionales con estrategias enfocadas en resultados medibles.</p>
-                <p class="text-left small"><strong>Servicios:</strong></p>
+                <p data-en="I improve the digital visibility of businesses and professionals with strategies focused on measurable results." data-es="Mejoro la visibilidad digital de empresas y profesionales con estrategias enfocadas en resultados medibles.">I improve the digital visibility of businesses and professionals with strategies focused on measurable results.</p>
+                <p class="text-left small"><strong data-en="Services:" data-es="Servicios:">Services:</strong></p>
                 <ul class="text-left small">
-                    <li>Optimización SEO on-page</li>
-                    <li>Posicionamiento local (Google Business Profile)</li>
-                    <li>Mejora de estructura y rendimiento web</li>
-                    <li>Imagen profesional para redes y marca personal</li>
+                    <li data-en="On-page SEO optimization" data-es="Optimización SEO on-page">On-page SEO optimization</li>
+                    <li data-en="Local positioning (Google Business Profile)" data-es="Posicionamiento local (Google Business Profile)">Local positioning (Google Business Profile)</li>
+                    <li data-en="Website structure and performance improvement" data-es="Mejora de estructura y rendimiento web">Website structure and performance improvement</li>
+                    <li data-en="Professional image for social media and personal branding" data-es="Imagen profesional para redes y marca personal">Professional image for social media and personal branding</li>
                 </ul>
-                <a class="border-bottom border-primary text-decoration-none" href="https://www.youtube.com/watch?v=rcBA4K0oHmY">Leer Más</a>
+                <a class="border-bottom border-primary text-decoration-none" href="https://www.youtube.com/watch?v=rcBA4K0oHmY" data-en="Read More" data-es="Leer Más">Read More</a>
             </div>
 
-            <!-- Creación de Contenido -->
+            <!-- Content Creation -->
             <div class="col-lg-4 col-md-6 text-center mb-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3"></i>
-                    <h4 class="font-weight-bold m-0">Creación de Contenido</h4>
+                    <h4 class="font-weight-bold m-0" data-en="Content Creation" data-es="Creación de Contenido">Content Creation</h4>
                 </div>
-                <p>Creo contenido claro, profesional y alineado con objetivos comerciales o técnicos.</p>
-                <p class="text-left small"><strong>Tipos de contenido:</strong></p>
+                <p data-en="I create clear, professional content aligned with commercial or technical objectives." data-es="Creo contenido claro, profesional y alineado con objetivos comerciales o técnicos.">I create clear, professional content aligned with commercial or technical objectives.</p>
+                <p class="text-left small"><strong data-en="Content types:" data-es="Tipos de contenido:">Content types:</strong></p>
                 <ul class="text-left small">
-                    <li>Contenido web corporativo</li>
-                    <li>Documentación técnica y manuales</li>
-                    <li>Contenido educativo y profesional</li>
-                    <li>Branding personal para LinkedIn y web</li>
+                    <li data-en="Corporate web content" data-es="Contenido web corporativo">Corporate web content</li>
+                    <li data-en="Technical documentation and manuals" data-es="Documentación técnica y manuales">Technical documentation and manuals</li>
+                    <li data-en="Educational and professional content" data-es="Contenido educativo y profesional">Educational and professional content</li>
+                    <li data-en="Personal branding for LinkedIn and web" data-es="Branding personal para LinkedIn y web">Personal branding for LinkedIn and web</li>
                 </ul>
-                <a class="border-bottom border-primary text-decoration-none" href="https://www.instagram.com/thedaob/">Leer Más</a>
+                <a class="border-bottom border-primary text-decoration-none" href="https://www.instagram.com/thedaob/" data-en="Read More" data-es="Leer Más">Read More</a>
             </div>
         </div>
     </div>
@@ -1276,7 +1233,7 @@
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Blog</h1>
-            <h1 class="position-absolute text-uppercase text-primary">Últimas Publicaciones</h1>
+            <h1 class="position-absolute text-uppercase text-primary" data-en="Latest Posts" data-es="Últimas Publicaciones">Latest Posts</h1>
         </div>
         <div class="row">
             <!-- Blog Post 1 -->
@@ -1287,20 +1244,20 @@
                         <div class="blog-date-modern">
                             <div class="date-content">
                                 <h4 class="font-weight-bold mb-0">21</h4>
-                                <small class="text-uppercase">Ago 2023</small>
+                                <small class="text-uppercase">Aug 2023</small>
                             </div>
                         </div>
                         <div class="blog-category">
-                            <span class="badge badge-primary">Salud</span>
+                            <span class="badge badge-primary" data-en="Health" data-es="Salud">Health</span>
                         </div>
                     </div>
                     <div class="blog-content p-4">
-                        <h5 class="font-weight-bold mb-3">Medroxiprogesterona: Lo que tienes que saber antes de...</h5>
-                        <p class="text-muted mb-3">Información esencial sobre este medicamento hormonal, sus usos, beneficios y consideraciones importantes antes de iniciar el tratamiento.</p>
+                        <h5 class="font-weight-bold mb-3" data-en="Medroxyprogesterone: What You Need to Know Before..." data-es="Medroxiprogesterona: Lo que tienes que saber antes de...">Medroxyprogesterone: What You Need to Know Before...</h5>
+                        <p class="text-muted mb-3" data-en="Essential information about this hormonal medication, its uses, benefits and important considerations before starting treatment." data-es="Información esencial sobre este medicamento hormonal, sus usos, beneficios y consideraciones importantes antes de iniciar el tratamiento.">Essential information about this hormonal medication, its uses, benefits and important considerations before starting treatment.</p>
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <small class="text-muted"><i class="fa fa-clock mr-1"></i> 5 min lectura</small>
+                            <small class="text-muted"><i class="fa fa-clock mr-1"></i> <span data-en="5 min read" data-es="5 min lectura">5 min read</span></small>
                         </div>
-                        <a class="btn btn-outline-primary btn-block" href="https://medium.com/@danielortegabello">Leer Más <i class="fa fa-arrow-right ml-2"></i></a>
+                        <a class="btn btn-outline-primary btn-block" href="https://medium.com/@danielortegabello" data-en="Read More" data-es="Leer Más">Read More <i class="fa fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -1309,11 +1266,11 @@
             <div class="col-lg-4 mb-5">
                 <div class="blog-card h-100">
                     <div class="position-relative overflow-hidden rounded-top">
-                        <img class="img-fluid w-100 blog-img" src="https://img.freepik.com/foto-gratis/pesos-ejercicio-pesas-fuerte-atletica_1139-709.jpg" alt="Técnica de entrenamiento">
+                        <img class="img-fluid w-100 blog-img" src="https://img.freepik.com/foto-gratis/pesos-ejercicio-pesas-fuerte-atletica_1139-709.jpg" alt="Training technique">
                         <div class="blog-date-modern">
                             <div class="date-content">
                                 <h4 class="font-weight-bold mb-0">22</h4>
-                                <small class="text-uppercase">Ago 2023</small>
+                                <small class="text-uppercase">Aug 2023</small>
                             </div>
                         </div>
                         <div class="blog-category">
@@ -1321,12 +1278,12 @@
                         </div>
                     </div>
                     <div class="blog-content p-4">
-                        <h5 class="font-weight-bold mb-3">¡Lo estás haciendo mal!: La importancia de una correcta técnica</h5>
-                        <p class="text-muted mb-3">Descubre por qué la técnica correcta es más importante que el peso que levantas y cómo evitar lesiones mientras maximizas tus resultados.</p>
+                        <h5 class="font-weight-bold mb-3" data-en="You're Doing It Wrong!: The Importance of Proper Technique" data-es="¡Lo estás haciendo mal!: La importancia de una correcta técnica">You're Doing It Wrong!: The Importance of Proper Technique</h5>
+                        <p class="text-muted mb-3" data-en="Discover why proper technique matters more than the weight you lift and how to avoid injuries while maximizing your results." data-es="Descubre por qué la técnica correcta es más importante que el peso que levantas y cómo evitar lesiones mientras maximizas tus resultados.">Discover why proper technique matters more than the weight you lift and how to avoid injuries while maximizing your results.</p>
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <small class="text-muted"><i class="fa fa-clock mr-1"></i> 7 min lectura</small>
+                            <small class="text-muted"><i class="fa fa-clock mr-1"></i> <span data-en="7 min read" data-es="7 min lectura">7 min read</span></small>
                         </div>
-                        <a class="btn btn-outline-primary btn-block" href="https://medium.com/@danielortegabello/lo-est%C3%A1s-haciendo-mal-la-importancia-de-una-correcta-t%C3%A9cnica-en-el-entrenamiento-1f866eb6c41c">Leer Más <i class="fa fa-arrow-right ml-2"></i></a>
+                        <a class="btn btn-outline-primary btn-block" href="https://medium.com/@danielortegabello/lo-est%C3%A1s-haciendo-mal-la-importancia-de-una-correcta-t%C3%A9cnica-en-el-entrenamiento-1f866eb6c41c" data-en="Read More" data-es="Leer Más">Read More <i class="fa fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -1335,11 +1292,11 @@
             <div class="col-lg-4 mb-5">
                 <div class="blog-card h-100">
                     <div class="position-relative overflow-hidden rounded-top">
-                        <img class="img-fluid w-100 blog-img" src="https://img.freepik.com/foto-gratis/vista-lateral-mano-sosteniendo-mancuerna_23-2149517339.jpg" alt="Resultados duraderos">
+                        <img class="img-fluid w-100 blog-img" src="https://img.freepik.com/foto-gratis/vista-lateral-mano-sosteniendo-mancuerna_23-2149517339.jpg" alt="Lasting results">
                         <div class="blog-date-modern">
                             <div class="date-content">
                                 <h4 class="font-weight-bold mb-0">14</h4>
-                                <small class="text-uppercase">Ago 2023</small>
+                                <small class="text-uppercase">Aug 2023</small>
                             </div>
                         </div>
                         <div class="blog-category">
@@ -1347,12 +1304,12 @@
                         </div>
                     </div>
                     <div class="blog-content p-4">
-                        <h5 class="font-weight-bold mb-3">El viaje se disfruta: Consejos para Resultados Duraderos</h5>
-                        <p class="text-muted mb-3">Más allá de la masa muscular, aprende a disfrutar el proceso de transformación física y mental con consejos prácticos para mantener resultados.</p>
+                        <h5 class="font-weight-bold mb-3" data-en="Enjoy the Journey: Tips for Lasting Results" data-es="El viaje se disfruta: Consejos para Resultados Duraderos">Enjoy the Journey: Tips for Lasting Results</h5>
+                        <p class="text-muted mb-3" data-en="Beyond muscle mass, learn to enjoy the physical and mental transformation process with practical tips for maintaining lasting results." data-es="Más allá de la masa muscular, aprende a disfrutar el proceso de transformación física y mental con consejos prácticos para mantener resultados.">Beyond muscle mass, learn to enjoy the physical and mental transformation process with practical tips for maintaining lasting results.</p>
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <small class="text-muted"><i class="fa fa-clock mr-1"></i> 6 min lectura</small>
+                            <small class="text-muted"><i class="fa fa-clock mr-1"></i> <span data-en="6 min read" data-es="6 min lectura">6 min read</span></small>
                         </div>
-                        <a class="btn btn-outline-primary btn-block" href="https://medium.com/@danielortegabello/el-viaje-se-disfruta-consejos-para-resultados-duraderos-y-m%C3%A1s-all%C3%A1-de-la-masa-muscular-a939ff8e0ac7">Leer Más <i class="fa fa-arrow-right ml-2"></i></a>
+                        <a class="btn btn-outline-primary btn-block" href="https://medium.com/@danielortegabello/el-viaje-se-disfruta-consejos-para-resultados-duraderos-y-m%C3%A1s-all%C3%A1-de-la-masa-muscular-a939ff8e0ac7" data-en="Read More" data-es="Leer Más">Read More <i class="fa fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -1374,7 +1331,7 @@
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
                 <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Contáctame</h1>
+                <h1 class="position-absolute text-uppercase text-primary" data-en="Contact Me" data-es="Contáctame">Contact Me</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -1384,42 +1341,42 @@
                                 <div class="social-card text-center p-4">
                                     <i class="fab fa-github fa-3x mb-3 text-primary"></i>
                                     <h3>GitHub</h3>
-                                    <p>Explora mis proyectos y contribuciones</p>
-                                    <a href="https://github.com/Thedaob" class="btn btn-outline-primary" target="_blank">Visitar GitHub</a>
+                                    <p data-en="Explore my projects and contributions" data-es="Explora mis proyectos y contribuciones">Explore my projects and contributions</p>
+                                    <a href="https://github.com/Thedaob" class="btn btn-outline-primary" target="_blank" data-en="Visit GitHub" data-es="Visitar GitHub">Visit GitHub</a>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="social-card text-center p-4">
                                     <i class="fab fa-linkedin fa-3x mb-3 text-primary"></i>
                                     <h3>LinkedIn</h3>
-                                    <p>Conéctate conmigo profesionalmente</p>
-                                    <a href="https://www.linkedin.com/in/daniel-ortega-bello-63a91b17a/" class="btn btn-outline-primary" target="_blank">Visitar LinkedIn</a>
+                                    <p data-en="Connect with me professionally" data-es="Conéctate conmigo profesionalmente">Connect with me professionally</p>
+                                    <a href="https://www.linkedin.com/in/daniel-ortega-bello-63a91b17a/" class="btn btn-outline-primary" target="_blank" data-en="Visit LinkedIn" data-es="Visitar LinkedIn">Visit LinkedIn</a>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="social-card text-center p-4">
                                     <i class="fab fa-instagram fa-3x mb-3 text-primary"></i>
                                     <h3>Instagram</h3>
-                                    <p>Sígueme para ver mi contenido</p>
-                                    <a href="https://www.instagram.com/thedaob/" class="btn btn-outline-primary" target="_blank">Visitar Instagram</a>
+                                    <p data-en="Follow me for my latest content" data-es="Sígueme para ver mi contenido">Follow me for my latest content</p>
+                                    <a href="https://www.instagram.com/thedaob/" class="btn btn-outline-primary" target="_blank" data-en="Visit Instagram" data-es="Visitar Instagram">Visit Instagram</a>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="social-card text-center p-4">
                                     <i class="fab fa-medium fa-3x mb-3 text-primary"></i>
                                     <h3>Medium</h3>
-                                    <p>Lee mis artículos y publicaciones</p>
-                                    <a href="https://medium.com/@danielortegabello" class="btn btn-outline-primary" target="_blank">Visitar Medium</a>
+                                    <p data-en="Read my articles and publications" data-es="Lee mis artículos y publicaciones">Read my articles and publications</p>
+                                    <a href="https://medium.com/@danielortegabello" class="btn btn-outline-primary" target="_blank" data-en="Visit Medium" data-es="Visitar Medium">Visit Medium</a>
                                 </div>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#socialCarousel" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Anterior</span>
+                            <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next" href="#socialCarousel" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Siguiente</span>
+                            <span class="sr-only">Next</span>
                         </a>
                     </div>
                 </div>
@@ -1435,24 +1392,24 @@
             <!-- About Section -->
             <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-white mb-4">Daniel Ortega Bello</h4>
-                <p class="mb-4">Ingeniero de Sistemas en formación especializado en automatización, desarrollo web y soluciones tecnológicas para empresas. Transformo procesos complejos en soluciones simples y eficientes.</p>
+                <p class="mb-4" data-en="Systems Engineer in training specialized in automation, web development and technology solutions for businesses. I transform complex processes into simple, efficient solutions." data-es="Ingeniero de Sistemas en formación especializado en automatización, desarrollo web y soluciones tecnológicas para empresas. Transformo procesos complejos en soluciones simples y eficientes.">Systems Engineer in training specialized in automation, web development and technology solutions for businesses. I transform complex processes into simple, efficient solutions.</p>
                 <div class="d-flex flex-column">
                     <p class="mb-2"><i class="fa fa-map-marker-alt mr-3"></i>Colombia</p>
                     <p class="mb-2"><i class="fa fa-envelope mr-3"></i>danielortegabello@gmail.com</p>
                     <p class="mb-2"><i class="fa fa-phone-alt mr-3"></i>+57 312 633 1586</p>
-                    <p class="mb-0"><i class="fa fa-briefcase mr-3"></i>Disponible para nuevas oportunidades</p>
+                    <p class="mb-0"><i class="fa fa-briefcase mr-3"></i><span data-en="Open to new opportunities" data-es="Disponible para nuevas oportunidades">Open to new opportunities</span></p>
                 </div>
             </div>
 
             <!-- Quick Links -->
             <div class="col-lg-2 col-md-6 mb-5">
-                <h4 class="text-white mb-4">Enlaces Rápidos</h4>
+                <h4 class="text-white mb-4" data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#home"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#about"><i class="fa fa-angle-right mr-2"></i>Sobre Mí</a>
-                    <a class="text-white mb-2" href="#qualification"><i class="fa fa-angle-right mr-2"></i>Experiencia</a>
-                    <a class="text-white mb-2" href="#skill"><i class="fa fa-angle-right mr-2"></i>Habilidades</a>
-                    <a class="text-white mb-2" href="#service"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+                    <a class="text-white mb-2" href="#home"><i class="fa fa-angle-right mr-2"></i><span data-en="Home" data-es="Inicio">Home</span></a>
+                    <a class="text-white mb-2" href="#about"><i class="fa fa-angle-right mr-2"></i><span data-en="About Me" data-es="Sobre Mí">About Me</span></a>
+                    <a class="text-white mb-2" href="#qualification"><i class="fa fa-angle-right mr-2"></i><span data-en="Experience" data-es="Experiencia">Experience</span></a>
+                    <a class="text-white mb-2" href="#skill"><i class="fa fa-angle-right mr-2"></i><span data-en="Skills" data-es="Habilidades">Skills</span></a>
+                    <a class="text-white mb-2" href="#service"><i class="fa fa-angle-right mr-2"></i><span data-en="Services" data-es="Servicios">Services</span></a>
                     <a class="text-white mb-2" href="#portfolio"><i class="fa fa-angle-right mr-2"></i>Portfolio</a>
                     <a class="text-white" href="#blog"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
@@ -1460,25 +1417,24 @@
 
             <!-- Resources -->
             <div class="col-lg-2 col-md-6 mb-5">
-                <h4 class="text-white mb-4">Recursos</h4>
+                <h4 class="text-white mb-4" data-en="Resources" data-es="Recursos">Resources</h4>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="https://github.com/Thedaob" target="_blank"><i class="fa fa-angle-right mr-2"></i>GitHub</a>
                     <a class="text-white mb-2" href="https://medium.com/@danielortegabello" target="_blank"><i class="fa fa-angle-right mr-2"></i>Medium Blog</a>
                     <a class="text-white mb-2" href="https://www.linkedin.com/in/daniel-ortega-bello-63a91b17a/" target="_blank"><i class="fa fa-angle-right mr-2"></i>LinkedIn</a>
-                    <a class="text-white" href="#contact"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                    <a class="text-white" href="#contact"><i class="fa fa-angle-right mr-2"></i><span data-en="Contact" data-es="Contacto">Contact</span></a>
                 </div>
             </div>
 
            
             <!-- Contacto WhatsApp -->
             <div class="col-lg-4 col-md-6 mb-5">                       
-                <h4 class="text-white mb-4">Contacto</h4>
-                <p class="mb-4">
-                    ¿Tienes un proyecto o una oportunidad laboral? 
-                    Hablemos y encuentra una solución a medida.
+                <h4 class="text-white mb-4" data-en="Contact" data-es="Contacto">Contact</h4>
+                <p class="mb-4" data-en="Have a project or job opportunity? Let's talk and find a tailored solution." data-es="¿Tienes un proyecto o una oportunidad laboral? Hablemos y encuentra una solución a medida.">
+                    Have a project or job opportunity? Let's talk and find a tailored solution.
                 </p>
                 <div class="wa-card">
-                    <a href="https://wa.me/573126331586?text=Hola,%20vi%20tu%20portafolio%20y%20quiero%20hablar%20sobre%20un%20proyecto"
+                    <a href="https://wa.me/573126331586?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project"
                     target="_blank"
                     class="wa-button">
                         <span class="wa-icon">
@@ -1486,11 +1442,11 @@
                         <path d="M20.5 3.5A11.8 11.8 0 0012 .5C5.7.5.5 5.7.5 12c0 2.1.6 4.2 1.7 6L.5 23.5 6.2 22c1.7 1 3.6 1.5 5.6 1.5 6.3 0 11.5-5.2 11.5-11.5 0-3-1.2-5.8-3.3-8z"/>
                         </svg>
                         </span>
-                        <span class="wa-text">Contactar por WhatsApp</span>
+                        <span class="wa-text" data-en="Contact via WhatsApp" data-es="Contactar por WhatsApp">Contact via WhatsApp</span>
                     </a>
                 </div>
             </div>
-                <h5 class="text-white mt-4 mb-3">Sígueme en redes</h5>
+                <h5 class="text-white mt-4 mb-3" data-en="Follow me on" data-es="Sígueme en redes">Follow me on</h5>
                 <div class="d-flex">
                     <a class="btn btn-light btn-social mr-2" href="https://twitter.com/thedaob" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-light btn-social mr-2" href="https://www.facebook.com/Thedaob/" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -1507,7 +1463,7 @@
 <!-- Copyright -->
 <div class="container-fluid footer-copyright text-white text-center py-3">
     <div class="container">
-        <p class="m-0">© 2024 Daniel Ortega Bello. Todos los derechos reservados.</p>
+        <p class="m-0" data-en="© 2024 Daniel Ortega Bello. All rights reserved." data-es="© 2024 Daniel Ortega Bello. Todos los derechos reservados.">© 2024 Daniel Ortega Bello. All rights reserved.</p>
     </div>
 </div>
 <!-- Footer End -->
@@ -1553,10 +1509,60 @@
         });
       </script>
 
+      <!-- Language Toggle Script -->
+<script>
+(function () {
+    'use strict';
+
+    const langBtn = document.getElementById('lang-toggle');
+    const langLabel = document.getElementById('lang-label');
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function applyLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+
+        // Update button label
+        langLabel.textContent = lang === 'en' ? 'Ñ' : 'EN';
+        langBtn.title = lang === 'en' ? 'Switch to Spanish' : 'Switch to English';
+
+        // Update html lang attr
+        document.documentElement.lang = lang === 'en' ? 'en' : 'es';
+
+        // Swap all data-en / data-es elements
+        document.querySelectorAll('[data-en]').forEach(el => {
+            const text = el.getAttribute('data-' + lang);
+            if (text !== null) {
+                // Preserve inner HTML for elements with strong/em tags
+                if (text.includes('<')) {
+                    el.innerHTML = text;
+                } else {
+                    el.textContent = text;
+                }
+            }
+        });
+
+        // Update WhatsApp href
+        const waHero = document.querySelector('.btn-whatsapp-custom');
+        if (waHero) {
+            waHero.href = lang === 'en'
+                ? 'https://wa.me/573126331586?text=Hi%20Daniel%2C%20I%20visited%20your%20website%20and%20I%27d%20love%20to%20chat%20about%20an%20opportunity%20%F0%9F%91%8B'
+                : 'https://wa.me/573126331586?text=Hola%20Daniel%2C%20vi%20tu%20web%20y%20me%20gustar%C3%ADa%20que%20habl%C3%A1ramos%20sobre%20una%20oportunidad%20%F0%9F%91%8B';
+        }
+    }
+
+    langBtn.addEventListener('click', function () {
+        applyLang(currentLang === 'en' ? 'es' : 'en');
+    });
+
+    // Init on load
+    applyLang(currentLang);
+})();
+</script>
+
       <!-- =====================================================
  Seccion de proyectos destacados 
-     ============================================================ -->
-<script>
+     ============================================================ --><script>
 (function () {
   'use strict';
 

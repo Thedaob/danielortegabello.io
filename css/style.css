@@ -12389,3 +12389,164 @@ body.dark .btn-whatsapp-custom {
 body.dark .btn-whatsapp-custom:hover {
     color: #fff !important;
 }
+
+
+
+/* ============================================================
+   LANGUAGE TOGGLE BUTTON (Ñ / EN)
+   ============================================================ */
+
+#lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid #0BCEAF;
+    background: transparent;
+    color: #0BCEAF;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    font-family: "Roboto", sans-serif;
+    flex-shrink: 0;
+}
+
+#lang-toggle:hover {
+    background: #0BCEAF;
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 4px 15px rgba(11, 206, 175, 0.4);
+}
+
+body.dark #lang-toggle {
+    border-color: #0DD9B3;
+    color: #0DD9B3;
+}
+
+body.dark #lang-toggle:hover {
+    background: #0DD9B3;
+    color: #0b1220;
+}
+
+
+
+/* ============================================================
+   NAVBAR — FIX: Altura fija, simple y sin saltos
+   ============================================================ */
+
+/* Siempre visible, altura controlada */
+.navbar-light {
+    display: flex !important;
+    height: 64px;
+    min-height: 64px;
+    max-height: 64px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: rgba(255, 255, 255, 0.97) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .navbar-light {
+    background: rgba(15, 23, 42, 0.97) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Brand — reducir tamaño del h1 */
+.navbar-brand h1 {
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+
+/* Nav links — altura y padding controlados */
+.navbar-light .navbar-nav .nav-link {
+    padding: 0 12px !important;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Hire Me button */
+.navbar .btn-outline-primary {
+    padding: 7px 20px !important;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Theme and lang toggle — alinear verticalmente */
+#theme-toggle,
+#lang-toggle {
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+/* Mobile: cuando el menú colapsa, no agranda la navbar */
+@media (max-width: 991.98px) {
+    .navbar-light {
+        height: 60px;
+        min-height: 60px;
+        max-height: 60px;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        height: auto !important;
+        padding: 10px 0 !important;
+    }
+
+    /* El collapse se abre hacia abajo sin afectar la barra */
+    .navbar-collapse {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 16px 24px 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+    }
+
+    body.dark .navbar-collapse {
+        background: rgba(15, 23, 42, 0.98);
+        border-top-color: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Botones lang/theme en mobile */
+    #theme-toggle { width: 36px; height: 36px; }
+    #lang-toggle  { width: 36px; height: 36px; font-size: 12px; }
+}
+
+
+
+/* ============================================================
+   FIX: Nav links color en modo oscuro
+   ============================================================ */
+
+body.dark .navbar-light .navbar-nav .nav-link {
+    color: #cbd5e1 !important;
+}
+
+body.dark .navbar-light .navbar-nav .nav-link:hover,
+body.dark .navbar-light .navbar-nav .nav-link.active {
+    color: #0DD9B3 !important;
+}
+
+body.dark .navbar-brand h1 {
+    color: #f1f5f9 !important;
+}
+
+body.dark .navbar-brand h1 span.text-primary {
+    color: #0DD9B3 !important;
+}
